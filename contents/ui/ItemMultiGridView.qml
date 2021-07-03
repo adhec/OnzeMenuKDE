@@ -177,7 +177,7 @@ PlasmaExtras.ScrollArea {
                         if (y < itemMultiGrid.flickableItem.contentY) {
                             itemMultiGrid.flickableItem.contentY = y;
                         } else {
-                            y += cellSize;
+                            y += cellSizeHeight;
                             y -= itemMultiGrid.flickableItem.contentY;
                             y -= itemMultiGrid.viewport.height;
 
