@@ -53,7 +53,7 @@ PlasmaCore.Dialog {
                                            highlightItemSvg.margins.left + highlightItemSvg.margins.right))
 
     property int cellSizeHeight: iconSize + theme.mSize(theme.defaultFont).height
-                           + units.largeSpacing * 2
+                           + units.gridUnit * 2
                            + (2 * Math.max(highlightItemSvg.margins.top + highlightItemSvg.margins.bottom,
                                            highlightItemSvg.margins.left + highlightItemSvg.margins.right))
 
@@ -121,7 +121,7 @@ PlasmaCore.Dialog {
                              screenAvail.height);
 
 
-        var offset = units.largeSpacing/2;
+        var offset = units.largeSpacing * 0.5;
 
         // Fall back to bottom-left of screen area when the applet is on the desktop or floating.
         var x = offset;
@@ -313,9 +313,6 @@ PlasmaCore.Dialog {
                     } else if (event.key == Qt.Key_Return || event.key == Qt.Key_Enter) {
                         if (text != "" && mainScrollArea.visibleGrid.count > 0) {
                             event.accepted = true;
-                            //pageList.currentItem.itemGrid.tryActivate(0, 0);
-                            //pageList.currentItem.itemGrid.model.trigger(0, "", null);
-
                             mainScrollArea.tryActivate(0, 0);
                             mainScrollArea.visibleGrid.itemGrid.model.trigger(0, "", null);
 
@@ -626,18 +623,18 @@ PlasmaCore.Dialog {
             }
 
             ListDelegate {
-                text: i18nd("plasma_lookandfeel_org.kde.lookandfeel", "Leave ... ")
+                text: i18nc("@action", "Lock Screen")
                 highlight: delegateHighlight
                 icon: "system-lock-screen"
                 size: units.iconSizes.smallMedium
+                enabled: pmEngine.data["Sleep States"]["LockScreen"]
                 onClicked: pmEngine.performOperation("lockScreen")
             }
 
             ListDelegate {
-                text: i18nc("@action", "Lock Screen")
+                text: i18nd("plasma_lookandfeel_org.kde.lookandfeel", "Leave ... ")
                 icon: "system-shutdown"
                 highlight: delegateHighlight
-                enabled: pmEngine.data["Sleep States"]["LockScreen"]
                 size: units.iconSizes.smallMedium
                 onClicked: pmEngine.performOperation("requestShutDown")
             }

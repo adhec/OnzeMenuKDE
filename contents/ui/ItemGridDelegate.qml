@@ -87,6 +87,7 @@ Item {
         text: ("name" in model ? model.name : model.display)
         width: parent.width * 0.4
     }
+
     PlasmaComponents.Label {
         visible: showLabel
         anchors.verticalCenter: parent.verticalCenter
@@ -100,7 +101,6 @@ Item {
         color: colorWithAlpha(theme.textColor,0.7)
         text: model.description
     }
-
 
     PlasmaCore.ToolTipArea {
         id: toolTip

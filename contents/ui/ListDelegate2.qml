@@ -41,16 +41,27 @@ Item {
     property alias size: icon.height
 
     property Item highlight
-
     height: size + 2 * units.smallSpacing
     width: height
-
     MouseArea {
         id: area
         anchors.fill: parent
         enabled: item.interactive
         hoverEnabled: true
         onClicked: item.clicked()
+        onContainsMouseChanged: {
+            if (!highlight) {
+                return
+            }
+
+            if (containsMouse) {
+                highlight.parent = item
+                highlight.width = item.width
+                highlight.height = item.height
+            }
+
+            highlight.visible = containsMouse
+        }
     }
 
     PlasmaCore.IconItem {
@@ -66,31 +77,10 @@ Item {
         }
     }
 
-    PlasmaCore.ToolTipArea {
-        id: toolTip
-        property string text: label.text
-        anchors.fill: parent
-        active: root.visible //&& label.truncated
-        mainItem: toolTipDelegate
-        onContainsMouseChanged: {
-            if (!highlight) {
-                return
-            }
-            if (containsMouse) {
-                highlight.parent = item
-                highlight.width = item.width
-                highlight.height = item.height
-
-            }
-            highlight.visible = containsMouse
-        }
-    }
-
     ColumnLayout {
         Layout.fillWidth: true
         spacing: 0
         visible: false
-
         PlasmaComponents.Label {
             id: label
             Layout.fillWidth: true

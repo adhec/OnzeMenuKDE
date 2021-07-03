@@ -58,7 +58,7 @@ Item {
     }
 
     Item{
-        height: iconSize + units.gridUnit + units.smallSpacing
+        height: iconSize + units.gridUnit * 2
         width: parent.width
         anchors.centerIn: parent
 
@@ -85,9 +85,10 @@ Item {
                 topMargin: units.smallSpacing
                 horizontalCenter: parent.horizontalCenter
             }
-            maximumLineCount: 1
+            maximumLineCount: plasmoid.configuration.labels2lines ? 2 : 1
             horizontalAlignment: Text.AlignHCenter
             width: parent.width - units.largeSpacing
+            height: units.gridUnit * 2
             elide: Text.ElideRight
             wrapMode: Text.Wrap
             color: theme.textColor

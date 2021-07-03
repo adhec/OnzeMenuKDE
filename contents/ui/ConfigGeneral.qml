@@ -47,6 +47,7 @@ Item {
 
     property alias cfg_numberColumns: numberColumns.value
     property alias cfg_numberRows: numberRows.value
+    property alias cfg_labels2lines: labels2lines.checked
     property alias cfg_displayPosition: displayPosition.currentIndex
 
     ColumnLayout {
@@ -157,26 +158,6 @@ Item {
             }
         }
 
-        // GroupBox {
-        //     Layout.fillWidth: true
-        //     title: i18n("Behavior")
-        //     flat: true
-        //     ColumnLayout {
-        //         RowLayout {
-        //             Label {
-        //                 text: i18n("Show applications as:")
-        //             }
-        //             ComboBox {
-        //                 id: appNameFormat
-        //
-        //                 Layout.fillWidth: true
-        //
-        //                 model: [i18n("Name only"), i18n("Description only"), i18n("Name (Description)"), i18n("Description (Name)")]
-        //             }
-        //         }
-        //
-        //     }
-        // }
 
         GroupBox {
             Layout.fillWidth: true
@@ -206,6 +187,10 @@ Item {
                 CheckBox {
                     id: useExtraRunners
                     text: i18n("Expand search to bookmarks, files and emails")
+                }
+                CheckBox {
+                    id: labels2lines
+                    text: i18n("Show labels in two lines")
                 }
             }
         }
