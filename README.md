@@ -10,14 +10,19 @@ Download from: [https://www.pling.com/p/1545530/](https://www.pling.com/p/154553
 
 ![Image of ditto](https://github.com/adhec/OnzeMenuKDE/blob/main/preview.jpg)
 
-### Coffee
 
-Thanks for all the support. If you like what I do,
-Share your ❤️ Buy me a ☕
+## Coffee
 
-[<img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png"  style="width:72px;">](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=V9Q8MK9CKSQW8&source=url)  or  [<img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg">](https://liberapay.com/_adhe_/donate)
+<p align="center">Share your ❤️ Buy me a ☕</p>
+
+<p align="center"><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=V9Q8MK9CKSQW8&source=url" target="_blank"><img src="https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/C2/logos-buttons/optimize/44_Grey_PayPal_Pill_Button.png" alt="Paypal button" style="height: 44px !important;width: 145px !important;" ></a><a href="https://www.buymeacoffee.com/adhe" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-1.svg" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;" ></a></p>
+
+[<img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg">](https://liberapay.com/_adhe_/donate)
+
 
 Have fun ;)
 
+## Translating
 
+See the [package/translate](package/translate) folder for instructions on translating.
 

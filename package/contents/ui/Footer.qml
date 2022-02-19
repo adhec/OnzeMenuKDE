@@ -87,7 +87,7 @@ RowLayout{
         ToolTip.delay: 1000
         ToolTip.timeout: 1000
         ToolTip.visible: hovered
-        ToolTip.text: qsTr("User Home")
+        ToolTip.text: i18n("User Home")
     }
 
     PlasmaComponents3.ToolButton {
@@ -96,7 +96,7 @@ RowLayout{
         ToolTip.delay: 1000
         ToolTip.timeout: 1000
         ToolTip.visible: hovered
-        ToolTip.text: qsTr("System Preferences")
+        ToolTip.text: i18n("System Preferences")
     }
 
     PlasmaComponents3.ToolButton {
@@ -105,7 +105,7 @@ RowLayout{
         ToolTip.delay: 1000
         ToolTip.timeout: 1000
         ToolTip.visible: hovered
-        ToolTip.text: qsTr("Lock Screen")
+        ToolTip.text: i18n("Lock Screen")
         visible: pmEngine.data["Sleep States"]["LockScreen"]
     }
 
@@ -117,6 +117,6 @@ RowLayout{
         ToolTip.delay: 1000
         ToolTip.timeout: 1000
         ToolTip.visible: hovered
-        ToolTip.text: qsTr("Leave ...")
+        ToolTip.text: i18n("Leave ...")
     }
 }

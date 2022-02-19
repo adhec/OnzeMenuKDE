@@ -38,8 +38,6 @@ import QtGraphicalEffects 1.0
 import org.kde.kquickcontrolsaddons 2.0
 
 import org.kde.plasma.components 3.0 as PlasmaComponents3
-import org.kde.plasma.private.quicklaunch 1.0
-
 
 PlasmaCore.Dialog {
     id: root
@@ -243,7 +241,7 @@ PlasmaCore.Dialog {
             focus: true
             width: tileSideWidth * plasmoid.configuration.numberColumns
             implicitHeight: units.gridUnit * 2
-            placeholderText: 'Type here to search ...'
+            placeholderText: i18n("Type here to search ...")
             placeholderTextColor: colorWithAlpha(theme.textColor,0.7)
             leftPadding: units.largeSpacing + units.iconSizes.small
             topPadding: units.gridUnit * 0.5
@@ -350,7 +348,7 @@ PlasmaCore.Dialog {
                 id: headLabelFavorites
                 color: colorWithAlpha(theme.textColor, 0.8)
                 level: 5
-                text: searching || readySearch ? i18n('Search results'): i18n("Pinned")
+                text: searching || readySearch ? i18n("Search results"): i18n("Pinned")
                 Layout.leftMargin: units.smallSpacing
                 font.weight: Font.Bold
 
@@ -366,7 +364,7 @@ PlasmaCore.Dialog {
                 flat: false
                 mirror: searching || readySearch
                 iconName:  searching || readySearch ?  'go-previous' : "go-next"
-                text:  searching || readySearch ?  'Pinned' : 'All apps'
+                text:  searching || readySearch ?  i18n("Pinned") : i18n("All apps")
                 onClicked:  {
                     if(readySearch || searching){
                         readySearch = false
@@ -504,7 +502,7 @@ PlasmaCore.Dialog {
                     flat: false
                     iconName:  viewDocuments ?  'go-previous' : "go-next"
                     mirror: viewDocuments
-                    text:  viewDocuments ? 'Back' :  'More'
+                    text:  viewDocuments ? i18n("Back") :  i18n("More")
                     onClicked:  viewDocuments = !viewDocuments
                 }
             }
