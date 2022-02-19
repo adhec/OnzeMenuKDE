@@ -23,19 +23,18 @@ import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.extras 2.0 as PlasmaExtras
 
 import org.kde.plasma.private.kicker 0.1 as Kicker
-import QtQuick.Controls 2.1
+
 PlasmaExtras.ScrollArea {
-    //
     id: itemMultiGrid
 
-    anchors {
-        top: parent.top
-    }
+    //anchors {
+    //    top: parent.top
+    //}
     anchors.fill: parent
-    //width: parent.width
-    ////implicitHeight: itemColumn.implicitHeight + units.largeSpacing
-    //height: parent.height
 
+    //width: parent.width
+
+    implicitHeight: itemColumn.implicitHeight
 
     signal keyNavLeft(int subGridIndex)
     signal keyNavRight(int subGridIndex)
@@ -46,9 +45,12 @@ PlasmaExtras.ScrollArea {
 
     property alias model: repeater.model
     property alias count: repeater.count
+    property bool isSquare: false
+    property int aCellHeight
+    property int aCellWidth
 
-    //clip: true
     verticalScrollBarPolicy: Qt.ScrollBarAsNeeded
+    horizontalScrollBarPolicy: Qt.ScrollBarAlwaysOff
 
     flickableItem.flickableDirection: Flickable.VerticalFlick
 
@@ -92,34 +94,40 @@ PlasmaExtras.ScrollArea {
     Column {
         id: itemColumn
 
-        width: itemMultiGrid.width - units.gridUnit
+        width: itemMultiGrid.width //- units.gridUnit
 
         Repeater {
             id: repeater
 
             delegate: Item {
                 width: itemColumn.width
-                height: headerHeight + gridView.height + (index == repeater.count - 1 ? 0 : footerHeight)
+                height:  gridViewLabel.height + gridView.height + (index == repeater.count - 1 ? 0 : units.smallSpacing)
+                //visible:  gridView.count > 0
 
-                property int headerHeight: gridViewLabel.height
-                property int footerHeight: units.smallSpacing * 3
-                visible:  gridView.count > 0
                 property Item itemGrid: gridView
 
                 PlasmaExtras.Heading {
                     id: gridViewLabel
                     anchors.top: parent.top
-
-                    x: units.smallSpacing
-                    width: parent.width - x
+                    anchors.left: parent.left
+                    anchors.leftMargin: units.smallSpacing * 4
                     height: dummyHeading.height
-                    elide: Text.ElideRight
                     wrapMode: Text.NoWrap
-                    opacity: 1.0
                     color: theme.textColor
+                    font.bold: true
+                    font.weight: Font.DemiBold
                     level: 5
-                    font.weight: Font.Bold
+                    verticalAlignment: Qt.AlignVCenter
                     text: repeater.model.modelForRow(index).description
+                }
+
+                Rectangle{
+                    anchors.right: parent.right
+                    anchors.verticalCenter: gridViewLabel.verticalCenter
+                    height: 1
+                    width: parent.width - gridViewLabel.implicitWidth - units.largeSpacing*2
+                    color: theme.textColor
+                    opacity: 0.15
                 }
 
                 MouseArea {
@@ -136,16 +144,16 @@ PlasmaExtras.ScrollArea {
                         topMargin: units.smallSpacing
                     }
 
-                    //TODO >
-                    //dragEnabled: false
-                    //dropEnabled: false
-                    // <
-
                     width: parent.width
-                    height: Math.ceil(count  * cellHeight)
-                    cellWidth: parent.width
-                    cellHeight: root.iconSize + (2 * highlightItemSvg.margins.top)//<>cellSize
-                    iconSize:   root.iconSize
+                    //height: Math.ceil(count / Math.floor(width / root.tileSide)) * root.tileSide
+                    height: gridView.count ? gridView.count * aCellHeight : 0
+
+                    cellWidth:  isSquare ? root.tileSide : aCellWidth
+                    cellHeight: isSquare ? root.tileSide : aCellHeight
+                    iconSize: root.iconSize
+                    square: isSquare
+                    verticalScrollBarPolicy: Qt.ScrollBarAlwaysOff
+
                     model: repeater.model.modelForRow(index)
 
                     onFocusChanged: {
@@ -177,7 +185,7 @@ PlasmaExtras.ScrollArea {
                         if (y < itemMultiGrid.flickableItem.contentY) {
                             itemMultiGrid.flickableItem.contentY = y;
                         } else {
-                            y += cellSizeHeight;
+                            y += isSquare ? root.tileSide : aCellHeight;
                             y -= itemMultiGrid.flickableItem.contentY;
                             y -= itemMultiGrid.viewport.height;
 

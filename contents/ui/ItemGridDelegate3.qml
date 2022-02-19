@@ -21,6 +21,7 @@ import QtQuick 2.0
 
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 2.0 as PlasmaComponents
+import QtQuick.Layouts 1.0
 
 import "code/tools.js" as Tools
 
@@ -29,7 +30,11 @@ Item {
 
     width:  GridView.view.cellWidth
     height: GridView.view.cellHeight
+
+
     property bool showLabel: true
+    property int numColumns: 1
+
     property int itemIndex: model.index
     property string favoriteId: model.favoriteId !== undefined ? model.favoriteId : ""
     property url url: model.url !== undefined ? model.url : ""
@@ -48,68 +53,64 @@ Item {
         actionMenu.open(x, y);
     }
 
-    function actionTriggered(actionId, actionArgument) {
-        var close = (Tools.triggerAction(GridView.view.model, model.index, actionId, actionArgument) === true);
-
-        if (close) {
-            root.toggle();
-        }
+    function colorWithAlpha(color, alpha) {
+        return Qt.rgba(color.r, color.g, color.b, alpha)
     }
 
+
+    function actionTriggered(actionId, actionArgument) {
+        var close = (Tools.triggerAction(GridView.view.model, model.index, actionId, actionArgument) === true);
+        if (close) root.toggle();
+    }
 
 
     PlasmaCore.IconItem {
         id: icon
+        anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         anchors.leftMargin: units.smallSpacing
-        anchors.verticalCenter: parent.verticalCenter
-        width: iconSize
+        width:  units.iconSizes.medium
         height: width
         colorGroup: PlasmaCore.Theme.ComplementaryColorGroup
         animated: false
         usesPlasmaTheme: item.GridView.view.usesPlasmaTheme
-        source:  {
-            return  model.decoration
-            //if (model.display.indexOf(".") === -1 ) {
-            //    var s = "-" + model.url
-            //    if( s[s.length - 8 ] == "."){
-            //        return  model.decoration
-            //    }
-            //    return "folder"
-            //}else{
-            //    return  model.decoration
-            //}
-        }
+        source: model.decoration
     }
 
-    PlasmaComponents.Label {
-        id: label
-        visible: showLabel
-        anchors {
-            left: icon.right
-            leftMargin: units.smallSpacing
-            //top: icon.top
-            verticalCenter: icon.verticalCenter
-        }
-        maximumLineCount: 1
-        elide: Text.ElideRight
-        wrapMode: Text.Wrap
-        color: theme.textColor
-        width: parent.width - icon.width - units.largeSpacing
-        text: ("name" in model ? model.name : model.display)
-    }
-    PlasmaComponents.Label {
+    GridLayout {
+        columns: numColumns
+        anchors.left: icon.right
         anchors.right: parent.right
-        anchors.rightMargin: units.smallSpacing
-        anchors.verticalCenter: label.verticalCenter
-        visible: showLabel
-        horizontalAlignment:  Text.AlignRight
-        maximumLineCount: 1
-        width: parent.width - label.implicitWidth - icon.width * 2
-        elide: Text.ElideRight
-        wrapMode: Text.Wrap
-        color: colorWithAlpha(theme.textColor,0.6)
-        text: model.description
+        anchors.leftMargin: units.largeSpacing
+        anchors.rightMargin: units.largeSpacing
+        anchors.verticalCenter: parent.verticalCenter
+        columnSpacing: 1
+        rowSpacing: 1
+
+        PlasmaComponents.Label {
+            id: label
+            Layout.fillWidth: true
+            visible: showLabel
+            maximumLineCount: 1
+            elide: Text.ElideRight
+            wrapMode: Text.Wrap
+            color: theme.textColor
+            text: ("name" in model ? model.name : model.display)
+            width: parent.width * 0.4
+        }
+
+        PlasmaComponents.Label {
+            visible: showLabel
+            Layout.fillWidth: true
+            horizontalAlignment: numColumns > 1 ? Text.AlignRight : Text.AlignLeft
+            maximumLineCount: 1
+            width: 10
+            elide: Text.ElideRight
+            wrapMode: Text.Wrap
+            color: colorWithAlpha(theme.textColor,0.6)
+            text: model.description
+            font.pixelSize: label.font.pixelSize - 2
+        }
     }
 
     PlasmaCore.ToolTipArea {
@@ -127,7 +128,6 @@ Item {
             openActionMenu(item);
         } else if ((event.key === Qt.Key_Enter || event.key === Qt.Key_Return)) {
             event.accepted = true;
-
             if ("trigger" in GridView.view.model) {
                 GridView.view.model.trigger(index, "", null);
                 root.toggle();

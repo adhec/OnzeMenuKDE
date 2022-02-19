@@ -38,6 +38,7 @@ FocusScope {
     property bool dragEnabled: true
     property bool dropEnabled: false
     property bool showLabels: true
+
     property alias usesPlasmaTheme: gridView.usesPlasmaTheme
 
     property alias currentIndex: gridView.currentIndex
@@ -71,7 +72,7 @@ FocusScope {
             return -1;
         }
 
-        return Math.floor(currentIndex / Math.floor(width / itemGrid.cellWidth));
+        return Math.floor(currentIndex / Math.floor(width / cellWidth));
     }
 
     function currentCol() {
@@ -79,17 +80,17 @@ FocusScope {
             return -1;
         }
 
-        return currentIndex - (currentRow() * Math.floor(width / itemGrid.cellWidth));
+        return currentIndex - (currentRow() * Math.floor(width / cellWidth));
     }
 
     function lastRow() {
-        var columns = Math.floor(width / itemGrid.cellWidth);
+        var columns = Math.floor(width / cellWidth);
         return Math.ceil(count / columns) - 1;
     }
 
     function tryActivate(row, col) {
         if (count) {
-            var columns = Math.floor(width / itemGrid.cellWidth);
+            var columns = Math.floor(width / cellWidth);
             var rows = Math.ceil(count / columns);
             row = Math.min(row, rows - 1);
             col = Math.min(col, columns - 1);
@@ -119,11 +120,11 @@ FocusScope {
         anchors.fill: parent
 
         onDragMove: {
-            if (!itemGrid.dropEnabled || gridView.animating || !kicker.dragSource) {
+            if (!dropEnabled || gridView.animating || !kicker.dragSource) {
                 return;
             }
 
-            var x = Math.max(0, event.x - (width % itemGrid.cellWidth));
+            var x = Math.max(0, event.x - (width % cellWidth));
             var cPos = mapToItem(gridView.contentItem, x, event.y);
             var item = gridView.itemAt(cPos.x, cPos.y);
 
@@ -132,42 +133,42 @@ FocusScope {
                     if (item !== kicker.dragSource) {
                         item.GridView.view.model.moveRow(dragSource.itemIndex, item.itemIndex);
                     }
-                } else if (kicker.dragSource.GridView.view.model.favoritesModel === itemGrid.model
-                           && !itemGrid.model.isFavorite(kicker.dragSource.favoriteId)) {
-                    var hasPlaceholder = (itemGrid.model.dropPlaceholderIndex !== -1);
+                } else if (kicker.dragSource.GridView.view.model.favoritesModel === model
+                           && !model.isFavorite(kicker.dragSource.favoriteId)) {
+                    var hasPlaceholder = (model.dropPlaceholderIndex !== -1);
 
-                    itemGrid.model.dropPlaceholderIndex = item.itemIndex;
+                    model.dropPlaceholderIndex = item.itemIndex;
 
                     if (!hasPlaceholder) {
                         gridView.currentIndex = (item.itemIndex - 1);
                     }
                 }
             } else if (kicker.dragSource.parent !== gridView.contentItem
-                       && kicker.dragSource.GridView.view.model.favoritesModel === itemGrid.model
-                       && !itemGrid.model.isFavorite(kicker.dragSource.favoriteId)) {
-                var hasPlaceholder = (itemGrid.model.dropPlaceholderIndex !== -1);
+                       && kicker.dragSource.GridView.view.model.favoritesModel === model
+                       && !model.isFavorite(kicker.dragSource.favoriteId)) {
+                var hasPlaceholder = (model.dropPlaceholderIndex !== -1);
 
-                itemGrid.model.dropPlaceholderIndex = hasPlaceholder ? itemGrid.model.count - 1 : itemGrid.model.count;
+                model.dropPlaceholderIndex = hasPlaceholder ? model.count - 1 : model.count;
 
                 if (!hasPlaceholder) {
-                    gridView.currentIndex = (itemGrid.model.count - 1);
+                    gridView.currentIndex = (model.count - 1);
                 }
             } else {
-                itemGrid.model.dropPlaceholderIndex = -1;
+                model.dropPlaceholderIndex = -1;
                 gridView.currentIndex = -1;
             }
         }
 
         onDragLeave: {
-            if ("dropPlaceholderIndex" in itemGrid.model) {
-                itemGrid.model.dropPlaceholderIndex = -1;
+            if ("dropPlaceholderIndex" in model) {
+                model.dropPlaceholderIndex = -1;
                 gridView.currentIndex = -1;
             }
         }
 
         onDrop: {
-            if (kicker.dragSource && kicker.dragSource.parent !== gridView.contentItem && kicker.dragSource.GridView.view.model.favoritesModel === itemGrid.model) {
-                itemGrid.model.addFavorite(kicker.dragSource.favoriteId, itemGrid.model.dropPlaceholderIndex);
+            if (kicker.dragSource && kicker.dragSource.parent !== gridView.contentItem && kicker.dragSource.GridView.view.model.favoritesModel === model) {
+                model.addFavorite(kicker.dragSource.favoriteId, model.dropPlaceholderIndex);
                 gridView.currentIndex = -1;
             }
         }
@@ -184,17 +185,9 @@ FocusScope {
         }
 
         Component{
-            id: aItemGridDelegate2
-            ItemGridDelegate2 {
-                showLabel: showLabels
-                iconSize: itemGrid.iconSize
-            }
-        }
-        Component{
             id: aItemGridDelegate
-            ItemGridDelegate {
-                showLabel: itemGrid.showLabels
-
+            ItemGridDelegate3 {
+                showLabel: showLabels                
             }
         }
 
@@ -207,6 +200,7 @@ FocusScope {
 
             horizontalScrollBarPolicy: Qt.ScrollBarAlwaysOff
 
+
             GridView {
                 id: gridView
 
@@ -215,13 +209,13 @@ FocusScope {
                 property bool usesPlasmaTheme: false
 
                 property int iconSize: units.iconSizes.huge
-
                 property bool animating: false
-                property int animationDuration: itemGrid.dropEnabled ? resetAnimationDurationTimer.interval : 0
+                property int animationDuration: dropEnabled ? resetAnimationDurationTimer.interval : 0
                 property bool square: false
+                property int numColumns: 1
+
 
                 focus: true
-
                 currentIndex: -1
 
                 move: Transition {
@@ -259,10 +253,10 @@ FocusScope {
                 keyNavigationWraps: false
                 boundsBehavior: Flickable.StopAtBounds
 
-                delegate: square ? aItemGridDelegate2 : aItemGridDelegate
+                delegate:  aItemGridDelegate
 
                 highlight: Item {
-                    property bool isDropPlaceHolder: "dropPlaceholderIndex" in itemGrid.model && itemGrid.currentIndex === itemGrid.model.dropPlaceholderIndex
+                    property bool isDropPlaceHolder: "dropPlaceholderIndex" in model && currentIndex === model.dropPlaceholderIndex
 
                     PlasmaComponents.Highlight {
                         visible: gridView.currentItem && !isDropPlaceHolder
@@ -303,7 +297,7 @@ FocusScope {
                 onCurrentIndexChanged: {
                     if (currentIndex != -1) {
                         hoverArea.hoverEnabled = false
-                        focus = true;
+                        focus = true;currentRow
                     }
                 }
 
@@ -317,7 +311,8 @@ FocusScope {
                 }
 
                 Keys.onLeftPressed: {
-                    if (itemGrid.currentCol() !== 0) {
+
+                    if (currentCol() !== 0) {
                         event.accepted = true;
                         moveCurrentIndexLeft();
                     } else {
@@ -328,7 +323,8 @@ FocusScope {
                 Keys.onRightPressed: {
                     var columns = Math.floor(width / cellWidth);
 
-                    if (itemGrid.currentCol() !== columns - 1 && currentIndex != count -1) {
+
+                    if (currentCol() !== columns - 1 && currentIndex != count -1) {
                         event.accepted = true;
                         moveCurrentIndexRight();
                     } else {
@@ -337,7 +333,8 @@ FocusScope {
                 }
 
                 Keys.onUpPressed: {
-                    if (itemGrid.currentRow() !== 0) {
+
+                    if (currentRow() !== 0) {
                         event.accepted = true;
                         moveCurrentIndexUp();
                         positionViewAtIndex(currentIndex, GridView.Contain);
@@ -347,7 +344,7 @@ FocusScope {
                 }
 
                 Keys.onDownPressed: {
-                    if (itemGrid.currentRow() < itemGrid.lastRow()) {
+                    if (currentRow() < itemGrid.lastRow()) {
                         // Fix moveCurrentIndexDown()'s lack of proper spatial nav down
                         // into partial columns.
                         event.accepted = true;
@@ -356,7 +353,7 @@ FocusScope {
                         currentIndex = Math.min(newIndex, count - 1);
                         positionViewAtIndex(currentIndex, GridView.Contain);
                     } else {
-                        itemGrid.keyNavDown();
+                        itemGrid.keyNavDown();currentRow
                     }
                 }
 
@@ -397,6 +394,7 @@ FocusScope {
                 // with keyboard navigation by ignoring repeated events with
                 // identical coordinates. As the work done here would be re-
                 // dundant in any case, these are safe to ignore.
+
                 if (lastX === x && lastY === y) {
                     return;
                 }
@@ -412,74 +410,75 @@ FocusScope {
                     pressedItem = null;
                 } else {
                     gridView.currentIndex = item.itemIndex;
-                    itemGrid.focus = (itemGrid.currentIndex != -1)
+                    itemGrid.focus = (currentIndex != -1)
                 }
 
                 return item;
             }
 
-            onPressed: mouse => {
-                           mouse.accepted = true;
+            onPressed: {
+                mouse.accepted = true;
 
-                           updatePositionProperties(mouse.x, mouse.y);
+                updatePositionProperties(mouse.x, mouse.y);false
 
-                           pressX = mouse.x;
-                           pressY = mouse.y;
+                pressX = mouse.x;
+                pressY = mouse.y;
 
-                           if (mouse.button == Qt.RightButton) {
-                               if (gridView.currentItem) {
-                                   if (gridView.currentItem.hasActionList) {
-                                       var mapped = mapToItem(gridView.currentItem, mouse.x, mouse.y);
-                                       gridView.currentItem.openActionMenu(mapped.x, mapped.y);
-                                   }
-                               } else {
-                                   var mapped = mapToItem(rootItem, mouse.x, mouse.y);
-                                   contextMenu.open(mapped.x, mapped.y);
-                               }
-                           } else {
-                               pressedItem = gridView.currentItem;
-                           }
-                       }
+                if (mouse.button == Qt.RightButton) {
+                    if (gridView.currentItem) {
+                        if (gridView.currentItem.hasActionList) {
+                            var mapped = mapToItem(gridView.currentItem, mouse.x, mouse.y);
+                            gridView.currentItem.openActionMenu(mapped.x, mapped.y);
+                        }
+                    } else {
+                        var mapped = mapToItem(rootItem, mouse.x, mouse.y);
+                        contextMenu.open(mapped.x, mapped.y);
+                    }
+                } else {
+                    pressedItem = gridView.currentItem;
+                }
+            }
 
-            onReleased: mouse => {
-                            mouse.accepted = true;
-                            updatePositionProperties(mouse.x, mouse.y);
+            onReleased: {
+                mouse.accepted = true;
+                updatePositionProperties(mouse.x, mouse.y);
 
-                            if (gridView.currentItem && gridView.currentItem == pressedItem) {
-                                if ("trigger" in gridView.model) {
-                                    gridView.model.trigger(pressedItem.itemIndex, "", null);
-                                    root.toggle();
-                                }
+                if (gridView.currentItem && gridView.currentItem == pressedItem) {
+                    if ("trigger" in gridView.model) {
+                        gridView.model.trigger(pressedItem.itemIndex, "", null);
+                        root.toggle();
+                    }
 
-                                itemGrid.itemActivated(pressedItem.itemIndex, "", null);
-                            } else if (!dragHelper.dragging && !pressedItem && mouse.button == Qt.LeftButton) {
-                                root.toggle();
-                            }
+                    itemGrid.itemActivated(pressedItem.itemIndex, "", null);
+                } else if (!dragHelper.dragging && !pressedItem && mouse.button == Qt.LeftButton) {
+                    root.toggle();
+                }
 
-                            pressX = -1;
-                            pressY = -1;
-                            pressedItem = null;
+                pressX = -1;
+                pressY = -1;
+                pressedItem = null;
+            }
+
+            onPositionChanged: {
+
+                var item = pressedItem? pressedItem : updatePositionProperties(mouse.x, mouse.y);
+
+                if (gridView.currentIndex != -1) {
+                    if (dragEnabled && pressX != -1 && dragHelper.isDrag(pressX, pressY, mouse.x, mouse.y)) {
+                        if ("pluginName" in item.m) {
+                            dragHelper.startDrag(kicker, item.url, item.icon,
+                                                 "text/x-plasmoidservicename", item.m.pluginName);
+                        } else {
+                            dragHelper.startDrag(kicker, item.url, item.icon);
                         }
 
-            onPositionChanged: mouse => {
-                                   var item = pressedItem? pressedItem : updatePositionProperties(mouse.x, mouse.y);
+                        kicker.dragSource = item;
 
-                                   if (gridView.currentIndex != -1) {
-                                       if (itemGrid.dragEnabled && pressX != -1 && dragHelper.isDrag(pressX, pressY, mouse.x, mouse.y)) {
-                                           if ("pluginName" in item.m) {
-                                               dragHelper.startDrag(kicker, item.url, item.icon,
-                                                                    "text/x-plasmoidservicename", item.m.pluginName);
-                                           } else {
-                                               dragHelper.startDrag(kicker, item.url, item.icon);
-                                           }
-
-                                           kicker.dragSource = item;
-
-                                           pressX = -1;
-                                           pressY = -1;
-                                       }
-                                   }
-                               }
+                        pressX = -1;
+                        pressY = -1;
+                    }
+                }
+            }
         }
     }
 }

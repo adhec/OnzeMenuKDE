@@ -27,13 +27,12 @@ import "code/tools.js" as Tools
 Item {
     id: item
 
-    width:  GridView.view.cellWidth
     height: GridView.view.cellHeight
+    width:  GridView.view.cellWidth // height
 
-
+    property int iconSize: 22
 
     property bool showLabel: true
-
     property int itemIndex: model.index
     property string favoriteId: model.favoriteId !== undefined ? model.favoriteId : ""
     property url url: model.url !== undefined ? model.url : ""
@@ -54,53 +53,54 @@ Item {
 
     function actionTriggered(actionId, actionArgument) {
         var close = (Tools.triggerAction(GridView.view.model, model.index, actionId, actionArgument) === true);
-        if (close) root.toggle();
-    }
-
-    Item{
-        height: iconSize + units.gridUnit * 2
-        width: parent.width
-        anchors.centerIn: parent
-
-
-        PlasmaCore.IconItem {
-            id: icon
-            anchors{
-                top: parent.top
-                horizontalCenter: parent.horizontalCenter
-            }
-            width: iconSize
-            height: width
-            colorGroup: PlasmaCore.Theme.ComplementaryColorGroup
-            animated: false
-            usesPlasmaTheme: item.GridView.view.usesPlasmaTheme
-            source: model.decoration
-        }
-
-        PlasmaComponents.Label {
-            id: label
-            visible: showLabel
-            anchors {
-                top: icon.bottom
-                topMargin: units.smallSpacing
-                horizontalCenter: parent.horizontalCenter
-            }
-            maximumLineCount: plasmoid.configuration.labels2lines ? 2 : 1
-            horizontalAlignment: Text.AlignHCenter
-            width: parent.width - units.largeSpacing
-            height: units.gridUnit * 2
-            elide: Text.ElideRight
-            wrapMode: Text.Wrap
-            color: theme.textColor
-            text: ("name" in model ? model.name : model.display)
+        if (close) {
+            root.toggle();
         }
     }
+
+
+    PlasmaCore.IconItem {
+        id: icon
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.verticalCenterOffset: -units.gridUnit
+        width:  iconSize
+        height: width
+        colorGroup: PlasmaCore.Theme.ComplementaryColorGroup
+        animated: false
+        usesPlasmaTheme: item.GridView.view.usesPlasmaTheme
+        source: model.decoration
+    }
+
+    PlasmaComponents.Label {
+        id: label
+        visible: showLabel
+        anchors {
+            horizontalCenter: icon.horizontalCenter
+            top: icon.bottom
+            topMargin: units.smallSpacing
+        }
+        width: parent.width - units.largeSpacing
+        maximumLineCount: 2
+        height: units.gridUnit * 2
+        elide: Text.ElideRight
+        horizontalAlignment: Qt.AlignHCenter
+        verticalAlignment: Qt.AlignTop
+        wrapMode: Text.Wrap
+        color: theme.textColor
+        text: ("name" in model ? model.name : model.display)
+
+    }
+
     PlasmaCore.ToolTipArea {
         id: toolTip
+
         property string text: model.display
+
         anchors.fill: parent
         active: root.visible && label.truncated
         mainItem: toolTipDelegate
+
         onContainsMouseChanged: item.GridView.view.itemContainsMouseChanged(containsMouse)
     }
 
@@ -110,6 +110,7 @@ Item {
             openActionMenu(item);
         } else if ((event.key === Qt.Key_Enter || event.key === Qt.Key_Return)) {
             event.accepted = true;
+
             if ("trigger" in GridView.view.model) {
                 GridView.view.model.trigger(index, "", null);
                 root.toggle();

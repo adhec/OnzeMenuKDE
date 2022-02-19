@@ -205,6 +205,7 @@ Item {
                         id: numberColumns
                         minimumValue: 4
                         maximumValue: 10
+                        stepSize: 2
                     }
                     Label {
                         Layout.leftMargin: units.smallSpacing
@@ -218,6 +219,7 @@ Item {
                         id: numberRows
                         minimumValue: 1
                         maximumValue: 10
+
                     }
                     Label {
                         Layout.leftMargin: units.smallSpacing

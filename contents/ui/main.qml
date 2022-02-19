@@ -65,12 +65,9 @@ Item {
         autoPopulate: false
         appNameFormat: 0
         flat: true
-        sorted: true
+
         showSeparators: false
         appletInterface: plasmoid
-
-        //paginate: true
-        //pageSize: plasmoid.configuration.numberColumns *  plasmoid.configuration.numberRows
 
         showAllApps: true
         showAllAppsCategorized: true
@@ -78,29 +75,7 @@ Item {
 
         showRecentApps: true
         showRecentDocs: true
-        showRecentContacts: true
-        showPowerSession: false
-
-        onFavoritesModelChanged: {
-            if ("initForClient" in favoritesModel) {
-                favoritesModel.initForClient("org.kde.plasma.kicker.favorites.instance-" + plasmoid.id)
-
-                if (!plasmoid.configuration.favoritesPortedToKAstats) {
-                    favoritesModel.portOldFavorites(plasmoid.configuration.favoriteApps);
-                    plasmoid.configuration.favoritesPortedToKAstats = true;
-                }
-            } else {
-                favoritesModel.favorites = plasmoid.configuration.favoriteApps;
-            }
-
-            favoritesModel.maxFavorites = pageSize;
-        }
-
-        onSystemFavoritesModelChanged: {
-            systemFavoritesModel.enabled = false;
-            systemFavoritesModel.favorites = plasmoid.configuration.favoriteSystemActions;
-            systemFavoritesModel.maxFavorites = 8;
-        }
+        showRecentContacts: false
 
         Component.onCompleted: {
             if ("initForClient" in favoritesModel) {
@@ -152,19 +127,21 @@ Item {
 
         appletInterface: plasmoid
         favoritesModel: globalFavorites
-        deleteWhenEmpty: false
-
-        mergeResults: true
-        //runners: plasmoid.configuration.useExtraRunners ? new Array("services").concat(plasmoid.configuration.extraRunners) : "services"
-        
+        //mergeResults: true
+        //runners: plasmoid.configuration.useExtraRunners ? new Array("services").concat(plasmoid.configuration.extraRunners) : "services"        
         runners: {
-            var runners = ["desktopsessions", "services", "places", "PowerDevil", "calculator", "unitconverter"];
+            var runners = new Array("services", "krunner_systemsettings");
+
+            runners = runners.concat(new Array("desktopsessions", "PowerDevil",
+                                               "calculator", "unitconverter"));
 
             if (plasmoid.configuration.useExtraRunners) {
-                runners = runners.concat(plasmoid.configuration.runners);
+                runners = runners.concat(plasmoid.configuration.extraRunners);
             }
+
             return runners;
         }
+        deleteWhenEmpty: true
 
     }
 
@@ -174,6 +151,10 @@ Item {
 
     Kicker.ProcessRunner {
         id: processRunner;
+    }
+
+    Kicker.WindowSystem {
+        id: windowSystem
     }
 
     PlasmaCore.FrameSvgItem {
@@ -193,6 +174,15 @@ Item {
         imagePath: "widgets/panel-background"
     }
 
+    PlasmaCore.FrameSvgItem {
+        id : backgroundSvg
+
+        visible: false
+
+        imagePath: "dialogs/background"
+    }
+
+
     PlasmaComponents.Label {
         id: toolTipDelegate
 
@@ -208,9 +198,28 @@ Item {
         dragSource = null;
     }
 
-    Component.onCompleted: {
-        plasmoid.setAction("menuedit", i18n("Edit Applications..."));
+    function enableHideOnWindowDeactivate() {
+        plasmoid.hideOnWindowDeactivate = true;
+    }
 
+    Component.onCompleted: {
+        //plasmoid.setAction("menuedit", i18n("Edit Applications..."));
+        //rootModel.refreshed.connect(reset);
+        //dragHelper.dropped.connect(resetDragSource);
+
+        if (plasmoid.hasOwnProperty("activationTogglesExpanded")) {
+            plasmoid.activationTogglesExpanded = false//!kicker.isDash
+        }
+
+        windowSystem.focusIn.connect(enableHideOnWindowDeactivate);
+        plasmoid.hideOnWindowDeactivate = true;
+
+        if (plasmoid.immutability !== PlasmaCore.Types.SystemImmutable) {
+            plasmoid.setAction("menuedit", i18n("Edit Applications…"), "kmenuedit");
+        }
+
+        //updateSvgMetrics();
+        PlasmaCore.Theme.themeChanged.connect(updateSvgMetrics);
         rootModel.refreshed.connect(reset);
 
         dragHelper.dropped.connect(resetDragSource);
