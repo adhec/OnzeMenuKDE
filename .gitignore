@@ -2,6 +2,7 @@ CMakeLists.txt*
 qml.qrc
 
 build*
+check*
 
 
 # Prerequisites

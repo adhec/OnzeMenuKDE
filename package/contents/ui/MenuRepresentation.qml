@@ -183,8 +183,8 @@ PlasmaCore.Dialog {
         Layout.maximumHeight:  Layout.minimumHeight
         property bool done: false
 
-        ScaleAnimator{id: animation1 ; target: globalFavoritesGrid ; from: 0.9; to: 1; duration: 500; easing.type: Easing.InOutQuad }
-        XAnimator{id: animation2; target: mainColumn ; from: focusScope.width; to: units.smallSpacing; duration: 500; easing.type: Easing.OutCubic }
+        ScaleAnimator{id: animation1 ; target: globalFavoritesGrid ; from: 0.9; to: 1; duration: units.shortDuration*2; easing.type: Easing.InOutQuad }
+        XAnimator{id: animation2; target: mainColumn ; from: focusScope.width; to: units.smallSpacing; duration: units.shortDuration*2; easing.type: Easing.OutCubic }
 
 
         focus: true
@@ -338,11 +338,11 @@ PlasmaCore.Dialog {
             anchors.horizontalCenter: parent.horizontalCenter
             height: btnAction.implicitHeight
 
-            //PlasmaCore.IconItem {
-            //    source: searching || readySearch ? 'application-menu' : 'favorite'
-            //    implicitHeight: units.iconSizes.smallMedium
-            //    implicitWidth: units.iconSizes.smallMedium
-            //}
+            PlasmaCore.IconItem {
+                source: searching || readySearch ? 'application-menu' : 'favorite'
+                implicitHeight: units.iconSizes.smallMedium
+                implicitWidth: units.iconSizes.smallMedium
+            }
 
             PlasmaExtras.Heading {
                 id: headLabelFavorites
@@ -390,7 +390,7 @@ PlasmaCore.Dialog {
                 }
             ]
             transitions: Transition {
-                OpacityAnimator{ duration: 500 }
+                OpacityAnimator{ duration: units.shortDuration*2 }
             }
         }
 
@@ -449,7 +449,7 @@ PlasmaCore.Dialog {
                     }
                 ]
                 transitions: Transition {
-                    PropertyAnimation { property: "height"; duration: 500;}
+                    PropertyAnimation { property: "height"; duration: units.shortDuration*2;}
                 }
                 Keys.onPressed: {
 
@@ -481,11 +481,11 @@ PlasmaCore.Dialog {
                 width: parent.width
                 height: btnAction.implicitHeight
 
-                //PlasmaCore.IconItem {
-                //    source: 'document-open-recent'
-                //    implicitHeight: units.iconSizes.smallMedium
-                //    implicitWidth: units.iconSizes.smallMedium
-                //}
+                PlasmaCore.IconItem {
+                    source: 'tag' // 'format-list-unordered'
+                    implicitHeight: units.iconSizes.smallMedium
+                    implicitWidth: units.iconSizes.smallMedium
+                }
 
                 PlasmaExtras.Heading {
                     id: headLabelDocuments
@@ -541,7 +541,7 @@ PlasmaCore.Dialog {
                     }
                 ]
                 transitions: Transition {
-                    PropertyAnimation { property: "height"; duration: 500; }
+                    PropertyAnimation { property: "height"; duration: units.shortDuration*2 }
                 }
 
                 Keys.onPressed: {
