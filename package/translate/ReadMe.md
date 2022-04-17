@@ -36,3 +36,4 @@ Or if you know how to make a pull request
 |----------|---------|-------|
 | Template |      33 |       |
 | nl       |   33/33 |  100% |
+| tr       |   33/33 |  100% |
