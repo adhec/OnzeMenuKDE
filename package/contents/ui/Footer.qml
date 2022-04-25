@@ -45,10 +45,8 @@ RowLayout{
         cache: false
         visible: source !== ""
         Layout.leftMargin: 10
-        //height: units.gridUnit * 2
-        //width: height
-        sourceSize.width: units.gridUnit * 2
-        sourceSize.height: units.gridUnit * 2
+        sourceSize.height: parent.height * 0.7
+        sourceSize.width:  parent.height * 0.7
         fillMode: Image.PreserveAspectFit
 
         // Crop the avatar to fit in a circle, like the lock and login screens

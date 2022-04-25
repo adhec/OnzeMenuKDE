@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OnzeMenu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-19 11:34-0500\n"
+"POT-Creation-Date: 2022-04-24 21:20-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -64,7 +64,7 @@ msgid "Clear Icon"
 msgstr ""
 
 #: ../contents/ui/ConfigGeneral.qml
-msgid "Menu position:"
+msgid "Menu position"
 msgstr ""
 
 #: ../contents/ui/ConfigGeneral.qml
@@ -80,10 +80,6 @@ msgid "Center bottom"
 msgstr ""
 
 #: ../contents/ui/ConfigGeneral.qml
-msgid "Search"
-msgstr ""
-
-#: ../contents/ui/ConfigGeneral.qml
 msgid "Expand search to bookmarks, files and emails"
 msgstr ""
 
@@ -92,15 +88,15 @@ msgid "Show labels in two lines"
 msgstr ""
 
 #: ../contents/ui/ConfigGeneral.qml
-msgid "Grid"
+msgid "Number of columns (main grid)"
 msgstr ""
 
 #: ../contents/ui/ConfigGeneral.qml
-msgid "Number of columns in grid"
+msgid "Number of rows (main grid)"
 msgstr ""
 
 #: ../contents/ui/ConfigGeneral.qml
-msgid "Number of rows in grid"
+msgid "Size of icons"
 msgstr ""
 
 #: ../contents/ui/Footer.qml

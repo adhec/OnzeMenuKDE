@@ -44,7 +44,9 @@
     <entry name="numberRows" type="Int">
     <default>3</default>
     </entry>
-
+    <entry name="defaultSize" type="String">
+    <default>Medium</default>
+    </entry>
     <entry name="favoriteApps" type="StringList">
       <default>preferred://browser,kontact.desktop,systemsettings.desktop,org.kde.dolphin.desktop,ktp-contactlist.desktop,org.kde.kate.desktop</default>
     </entry>

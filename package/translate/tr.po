@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OnzeMenu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-19 11:34-0500\n"
+"POT-Creation-Date: 2022-04-24 21:20-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,8 +67,8 @@ msgid "Clear Icon"
 msgstr "Simgeyi Temizle"
 
 #: ../contents/ui/ConfigGeneral.qml
-msgid "Menu position:"
-msgstr "Menü konumu:"
+msgid "Menu position"
+msgstr ""
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Default"
@@ -83,10 +83,6 @@ msgid "Center bottom"
 msgstr "Orta alt"
 
 #: ../contents/ui/ConfigGeneral.qml
-msgid "Search"
-msgstr "Ara"
-
-#: ../contents/ui/ConfigGeneral.qml
 msgid "Expand search to bookmarks, files and emails"
 msgstr "Aramayı yer imlerine, dosyalara ve e-postalara genişletin"
 
@@ -95,16 +91,16 @@ msgid "Show labels in two lines"
 msgstr "Etiketleri iki satırda göster"
 
 #: ../contents/ui/ConfigGeneral.qml
-msgid "Grid"
-msgstr "Izgara"
+msgid "Number of columns (main grid)"
+msgstr ""
 
 #: ../contents/ui/ConfigGeneral.qml
-msgid "Number of columns in grid"
-msgstr "Izgaradaki sütun sayısı"
+msgid "Number of rows (main grid)"
+msgstr ""
 
 #: ../contents/ui/ConfigGeneral.qml
-msgid "Number of rows in grid"
-msgstr "Izgaradaki satır sayısı"
+msgid "Size of icons"
+msgstr ""
 
 #: ../contents/ui/Footer.qml
 msgid "User Home"
@@ -153,3 +149,18 @@ msgstr "Geri"
 #: ../contents/ui/MenuRepresentation.qml
 msgid "More"
 msgstr "Daha"
+
+#~ msgid "Menu position:"
+#~ msgstr "Menü konumu:"
+
+#~ msgid "Search"
+#~ msgstr "Ara"
+
+#~ msgid "Grid"
+#~ msgstr "Izgara"
+
+#~ msgid "Number of columns in grid"
+#~ msgstr "Izgaradaki sütun sayısı"
+
+#~ msgid "Number of rows in grid"
+#~ msgstr "Izgaradaki satır sayısı"

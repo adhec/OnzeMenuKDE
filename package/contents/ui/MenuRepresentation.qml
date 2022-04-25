@@ -47,10 +47,20 @@ PlasmaCore.Dialog {
     location: PlasmaCore.Types.Floating
     hideOnWindowDeactivate: true
 
-    property int iconSize: units.iconSizes.medium
-    property int iconSizeSquare: units.iconSizes.medium
-    property int tileSideHeight: units.iconSizes.large + theme.mSize(theme.defaultFont).height
-                                 + (4 * units.smallSpacing)
+    property int defaultSize: {
+        switch(plasmoid.configuration.defaultSize){
+        case "SmallMedium": return units.iconSizes.smallMedium;
+        case "Medium":      return units.iconSizes.medium;
+        case "Large":       return units.iconSizes.large;
+        case "Huge":        return units.iconSizes.huge;
+        default: return 64
+        }
+    }
+
+    property int iconSize:       defaultSize
+    property int iconSizeSquare: defaultSize
+    property int tileSideHeight: defaultSize + theme.mSize(theme.defaultFont).height * 2
+                                 + units.largeSpacing
                                  + (2 * Math.max(highlightItemSvg.margins.top + highlightItemSvg.margins.bottom,
                                                  highlightItemSvg.margins.left + highlightItemSvg.margins.right))
 
@@ -62,7 +72,7 @@ PlasmaCore.Dialog {
     property bool readySearch: false
     property bool viewDocuments: false
 
-    property int _margin: units.largeSpacing * 0.5
+    property int _margin: iconSizeSquare > 33 ? units.largeSpacing  : units.largeSpacing * 0.5
 
     function colorWithAlpha(color, alpha) {
         return Qt.rgba(color.r, color.g, color.b, alpha)
@@ -260,20 +270,18 @@ PlasmaCore.Dialog {
                 text = "";
             }
             function backspace() {
+                focus = true;
                 if(searching) text = text.slice(0, -1);
-                //focus = true;
             }
             function appendText(newText) {
                 if (!root.visible) {
                     return;
                 }
-                //focus = true;
+                focus = true;
                 text = text + newText;
             }
             Keys.onPressed: {
-                if (event.key == Qt.Key_Space) {
-                    event.accepted = true;
-                } else if (event.key == Qt.Key_Down) {
+                if (event.key == Qt.Key_Down || event.key == Qt.Key_Tab) {
                     event.accepted = true;
                     if( searching || readySearch)
                         mainColumn.visibleGrid.tryActivate(0,0);
@@ -281,26 +289,6 @@ PlasmaCore.Dialog {
                         documentsFavoritesGrid.tryActivate(0,0);
                     else
                         globalFavoritesGrid.tryActivate(0,0);
-
-                } else if (event.key == Qt.Key_Tab) {
-                    event.accepted = true;
-                    if( searching || readySearch)
-                        mainColumn.visibleGrid.tryActivate(0,0);
-                    else
-                        globalFavoritesGrid.tryActivate(0,0);
-                } else if (event.key == Qt.Key_Backspace) {
-                    event.accepted = true;
-                    if(searching)
-                        searchField.backspace();
-                    //else
-                    //    searchField.focus = true
-                } else if (event.key == Qt.Key_Escape) {
-                    event.accepted = true;
-                    if(searching){
-                        clear()
-                    } else {
-                        root.toggle()
-                    }
                 }
             }
         }
@@ -677,7 +665,7 @@ PlasmaCore.Dialog {
         Rectangle{
             id: footer
             width: parent.width + backgroundSvg.margins.right + backgroundSvg.margins.left
-            height: units.gridUnit * 3
+            height: root.iconSizeSquare + units.smallSpacing*2 // units.gridUnit * 3
             x: - backgroundSvg.margins.left
             y: parent.height - height + backgroundSvg.margins.bottom
             color: colorWithAlpha(theme.textColor,0.05)

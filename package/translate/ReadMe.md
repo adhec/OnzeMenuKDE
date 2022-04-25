@@ -34,6 +34,6 @@ Or if you know how to make a pull request
 ## Status
 |  Locale  |  Lines  | % Done|
 |----------|---------|-------|
-| Template |      33 |       |
-| nl       |   33/33 |  100% |
-| tr       |   33/33 |  100% |
+| Template |      32 |       |
+| nl       |   28/32 |   87% |
+| tr       |   28/32 |   87% |
