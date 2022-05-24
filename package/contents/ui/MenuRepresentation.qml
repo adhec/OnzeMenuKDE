@@ -60,11 +60,10 @@ PlasmaCore.Dialog {
     property int iconSize:       defaultSize
     property int iconSizeSquare: defaultSize
     property int tileSideHeight: defaultSize + theme.mSize(theme.defaultFont).height * 2
-                                 + units.largeSpacing
                                  + (2 * Math.max(highlightItemSvg.margins.top + highlightItemSvg.margins.bottom,
                                                  highlightItemSvg.margins.left + highlightItemSvg.margins.right))
 
-    property int tileSideWidth: tileSideHeight
+    property int tileSideWidth: tileSideHeight + units.smallSpacing*2
 
     property int tileHeightDocuments: units.gridUnit * 2 + units.smallSpacing * 4
 
@@ -129,7 +128,6 @@ PlasmaCore.Dialog {
     function popupPosition(width, height) {
         var screenAvail = plasmoid.availableScreenRect;
         var screenGeom = plasmoid.screenGeometry;
-
         var screen = Qt.rect(screenAvail.x + screenGeom.x,
                              screenAvail.y + screenGeom.y,
                              screenAvail.width,
@@ -155,27 +153,27 @@ PlasmaCore.Dialog {
             horizMidPoint = screen.x + (screen.width / 2);
             vertMidPoint = screen.y + (screen.height / 2);
             x = horizMidPoint - width / 2;
-            y = screen.height - height - offset - panelSvg.margins.top;
+            y = screen.y + screen.height - height - offset - panelSvg.margins.top;
         } else if (plasmoid.location === PlasmaCore.Types.BottomEdge) {
             horizMidPoint = screen.x + (screen.width / 2);
             appletTopLeft = parent.mapToGlobal(0, 0);
             x = (appletTopLeft.x < horizMidPoint) ? screen.x + offset : (screen.x + screen.width) - width - offset;
-            y = screen.height - height - offset - panelSvg.margins.top;
+            y = screen.y + screen.height - height - offset - panelSvg.margins.top;
         } else if (plasmoid.location === PlasmaCore.Types.TopEdge) {
             horizMidPoint = screen.x + (screen.width / 2);
             var appletBottomLeft = parent.mapToGlobal(0, parent.height);
             x = (appletBottomLeft.x < horizMidPoint) ? screen.x + offset : (screen.x + screen.width) - width - offset;
-            y = parent.height + panelSvg.margins.bottom + offset;
+            y = screen.y + parent.height + panelSvg.margins.bottom + offset;
         } else if (plasmoid.location === PlasmaCore.Types.LeftEdge) {
             vertMidPoint = screen.y + (screen.height / 2);
             appletTopLeft = parent.mapToGlobal(0, 0);
             x = parent.width + panelSvg.margins.right + offset;
-            y = (appletTopLeft.y < vertMidPoint) ? screen.y + offset : (screen.y + screen.height) - height - offset;
+            y = screen.y + (appletTopLeft.y < vertMidPoint) ? screen.y + offset : (screen.y + screen.height) - height - offset;
         } else if (plasmoid.location === PlasmaCore.Types.RightEdge) {
             vertMidPoint = screen.y + (screen.height / 2);
             appletTopLeft = parent.mapToGlobal(0, 0);
             x = appletTopLeft.x - panelSvg.margins.left - offset - width;
-            y = (appletTopLeft.y < vertMidPoint) ? screen.y + offset : (screen.y + screen.height) - height - offset;
+            y = screen.y + (appletTopLeft.y < vertMidPoint) ? screen.y + offset : (screen.y + screen.height) - height - offset;
         }
 
         return Qt.point(x, y);
@@ -189,7 +187,7 @@ PlasmaCore.Dialog {
         Layout.maximumWidth:  (tileSideWidth *  plasmoid.configuration.numberColumns) + units.largeSpacing * 2
         Layout.minimumWidth:  (tileSideWidth *  plasmoid.configuration.numberColumns) + units.largeSpacing * 2
 
-        Layout.minimumHeight: searchField.implicitHeight + topRow.height +  firstPage.height + footer.height + _margin * 6
+        Layout.minimumHeight: searchField.implicitHeight + topRow.height +  firstPage.height + footer.height + _margin * 5
         Layout.maximumHeight:  Layout.minimumHeight
         property bool done: false
 
@@ -246,7 +244,7 @@ PlasmaCore.Dialog {
         PlasmaComponents3.TextField {
             id: searchField
             anchors.top: parent.top
-            anchors.margins: _margin * 2
+            anchors.margins: _margin
             anchors.horizontalCenter: parent.horizontalCenter
             focus: true
             width: tileSideWidth * plasmoid.configuration.numberColumns
