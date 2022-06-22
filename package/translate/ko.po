@@ -1,0 +1,149 @@
+# Translation of OnzeMenu in LANGUAGE
+# Copyright (C) 2022
+# This file is distributed under the same license as the OnzeMenu package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OnzeMenu\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-24 21:20-0300\n"
+"PO-Revision-Date: 2022-06-22 14:28+0900\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: ../metadata.desktop
+msgid "OnzeMenu 11"
+msgstr "Onze 메뉴 11"
+
+#: ../metadata.desktop
+msgid "A configurable launcher menu 11"
+msgstr "설정 가능한 Win11 스타일 프로그램 실행기"
+
+#: ../contents/config/config.qml
+msgid "General"
+msgstr "일반"
+
+#: ../contents/ui/code/tools.js
+msgid "Remove from Favorites"
+msgstr "즐겨찾기에서 제거"
+
+#: ../contents/ui/code/tools.js
+msgid "Add to Favorites"
+msgstr "즐겨찾기에 추가"
+
+#: ../contents/ui/code/tools.js
+msgid "On All Activities"
+msgstr "모든 활동에서"
+
+#: ../contents/ui/code/tools.js
+msgid "On the Current Activity"
+msgstr "현재 활동에서"
+
+#: ../contents/ui/code/tools.js
+msgid "Show in Favorites"
+msgstr "즐겨찾기에 표시"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Icon:"
+msgstr "아이콘:"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgctxt "@item:inmenu Open icon chooser dialog"
+msgid "Choose..."
+msgstr "선택..."
+
+#: ../contents/ui/ConfigGeneral.qml
+msgctxt "@item:inmenu Reset icon to default"
+msgid "Clear Icon"
+msgstr "아이콘 초기화"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Menu position"
+msgstr "메뉴 위치"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Default"
+msgstr "기본"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Center"
+msgstr "가운데"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Center bottom"
+msgstr "가운데 밑"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Expand search to bookmarks, files and emails"
+msgstr "책갈피, 파일, 이메일에서도 찾기"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Show labels in two lines"
+msgstr "두 줄로 레이블 표시"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Number of columns (main grid)"
+msgstr "열 수 (메인 그리드)"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Number of rows (main grid)"
+msgstr "행 수 (메인 그리드)"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Size of icons"
+msgstr "아이콘 크기"
+
+#: ../contents/ui/Footer.qml
+msgid "User Home"
+msgstr "홈 폴더"
+
+#: ../contents/ui/Footer.qml
+msgid "System Preferences"
+msgstr "시스템 설정"
+
+#: ../contents/ui/Footer.qml
+msgid "Lock Screen"
+msgstr "잠금"
+
+#: ../contents/ui/Footer.qml
+msgid "Leave ..."
+msgstr "떠나기..."
+
+#: ../contents/ui/main.qml
+msgid "Edit Applications…"
+msgstr "프로그램 편집…"
+
+#: ../contents/ui/MenuRepresentation.qml
+msgid "Type here to search ..."
+msgstr "검색하려면 입력..."
+
+#: ../contents/ui/MenuRepresentation.qml
+msgid "Search results"
+msgstr "검색 결과"
+
+#: ../contents/ui/MenuRepresentation.qml
+msgid "Pinned"
+msgstr "고정됨"
+
+#: ../contents/ui/MenuRepresentation.qml
+msgid "All apps"
+msgstr "모든 프로그램"
+
+#: ../contents/ui/MenuRepresentation.qml
+msgid "Recommended"
+msgstr "추천"
+
+#: ../contents/ui/MenuRepresentation.qml
+msgid "Back"
+msgstr "뒤로"
+
+#: ../contents/ui/MenuRepresentation.qml
+msgid "More"
+msgstr "더 보기"
