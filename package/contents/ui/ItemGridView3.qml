@@ -56,8 +56,8 @@ FocusScope {
     property alias verticalScrollBarPolicy: scrollArea.verticalScrollBarPolicy
 
     onDropEnabledChanged: {
-        if (!dropEnabled && "dropPlaceHolderIndex" in model) {
-            model.dropPlaceHolderIndex = -1;
+        if (!dropEnabled && model && model.hasOwnProperty("dropPlaceholderIndex")) {
+            model.dropPlaceholderIndex = -1;
         }
     }
 
@@ -256,7 +256,7 @@ FocusScope {
                 delegate:  aItemGridDelegate
 
                 highlight: Item {
-                    property bool isDropPlaceHolder: "dropPlaceholderIndex" in model && currentIndex === model.dropPlaceholderIndex
+                    property bool isDropPlaceHolder: model && model.hasOwnProperty("dropPlaceholderIndex") && currentIndex === model.dropPlaceholderIndex
 
                     PlasmaComponents.Highlight {
                         visible: gridView.currentItem && !isDropPlaceHolder
