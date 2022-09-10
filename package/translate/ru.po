@@ -1,0 +1,152 @@
+# Translation of OnzeMenu in LANGUAGE
+# Copyright (C) 2022
+# This file is distributed under the same license as the OnzeMenu package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: OnzeMenu\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-28 23:47-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../metadata.desktop
+msgid "OnzeMenu 11"
+msgstr ""
+
+#: ../metadata.desktop
+msgid "A configurable launcher menu 11"
+msgstr "Настраиваемое меню запуска OnzeMenu 11"
+
+#: ../contents/config/config.qml
+msgid "General"
+msgstr "Основное"
+
+#: ../contents/ui/code/tools.js
+msgid "Remove from Favorites"
+msgstr "Удалить из избранного"
+
+#: ../contents/ui/code/tools.js
+msgid "Add to Favorites"
+msgstr "Добавить в избранное"
+
+#: ../contents/ui/code/tools.js
+msgid "On All Activities"
+msgstr "Во всех комнатах"
+
+#: ../contents/ui/code/tools.js
+msgid "On the Current Activity"
+msgstr "В текущей комнате"
+
+#: ../contents/ui/code/tools.js
+msgid "Show in Favorites"
+msgstr "Показать в избранном"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Icon:"
+msgstr "Значок:"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgctxt "@item:inmenu Open icon chooser dialog"
+msgid "Choose..."
+msgstr "Выбрать..."
+
+#: ../contents/ui/ConfigGeneral.qml
+msgctxt "@item:inmenu Reset icon to default"
+msgid "Clear Icon"
+msgstr "Удалить значок"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Menu position"
+msgstr "Позиция меню"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Default"
+msgstr "По умолчанию"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Center"
+msgstr "Центр"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Center bottom"
+msgstr "Центр снизу"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Expand search to bookmarks, files and emails"
+msgstr "Поиск по закладкам, файлам и электронным письмам"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Show labels in two lines"
+msgstr "Показывать метки в две строки"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Number of columns (main grid)"
+msgstr "Количество столбцов"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Number of rows (main grid)"
+msgstr "Количество строк"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Icons smooth"
+msgstr "Сглаживание значков"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Size of icons"
+msgstr "Размер значков"
+
+#: ../contents/ui/Footer.qml
+msgid "User Home"
+msgstr "Домашний каталог"
+
+#: ../contents/ui/Footer.qml
+msgid "System Preferences"
+msgstr "Параметры системы"
+
+#: ../contents/ui/Footer.qml
+msgid "Lock Screen"
+msgstr "Заблокировать"
+
+#: ../contents/ui/Footer.qml
+msgid "Leave ..."
+msgstr "Выход..."
+
+#: ../contents/ui/main.qml
+msgid "Edit Applications…"
+msgstr "Изменить Приложения…"
+
+#: ../contents/ui/MenuRepresentation.qml
+msgid "Type here to search ..."
+msgstr "Введите для поиска"
+
+#: ../contents/ui/MenuRepresentation.qml
+msgid "Search results"
+msgstr "Результаты поиска"
+
+#: ../contents/ui/MenuRepresentation.qml
+msgid "Pinned"
+msgstr "Закреплено"
+
+#: ../contents/ui/MenuRepresentation.qml
+msgid "All apps"
+msgstr "Все приложения"
+
+#: ../contents/ui/MenuRepresentation.qml
+msgid "Recommended"
+msgstr "Рекомендуемое"
+
+#: ../contents/ui/MenuRepresentation.qml
+msgid "Back"
+msgstr "Назад"
+
+#: ../contents/ui/MenuRepresentation.qml
+msgid "More"
+msgstr "Еще"
