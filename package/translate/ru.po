@@ -1,4 +1,4 @@
-# Translation of OnzeMenu in LANGUAGE
+# Translation of OnzeMenu in ru
 # Copyright (C) 2022
 # This file is distributed under the same license as the OnzeMenu package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.

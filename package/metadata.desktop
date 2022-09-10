@@ -20,8 +20,11 @@ X-KDE-PluginInfo-License=GPL v2+
 X-KDE-PluginInfo-EnabledByDefault=true
 
 Name[fr]=OnzeMenu 11
+Name[ko]=Onze 메뉴 11
 Name[nl]=OnzeMenu 11
 Name[tr]=OnzeMenu 11
 Comment[fr]=Un lanceur configurable style Win11
+Comment[ko]=설정 가능한 Win11 스타일 프로그램 실행기
 Comment[nl]=Een instelbare programmastarter 11
+Comment[ru]=Настраиваемое меню запуска OnzeMenu 11
 Comment[tr]=Yapılandırılabilir başlatıcı menüsü 11

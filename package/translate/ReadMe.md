@@ -36,5 +36,7 @@ Or if you know how to make a pull request
 |----------|---------|-------|
 | Template |      33 |       |
 | fr       |   32/33 |   96% |
+| ko       |   32/33 |   96% |
 | nl       |   32/33 |   96% |
+| ru       |   32/33 |   96% |
 | tr       |   28/33 |   84% |
