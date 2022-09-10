@@ -80,6 +80,7 @@ Item {
             //    return  model.decoration
             //}
         }
+        smooth: plasmoid.configuration.iconSmooth
     }
 
     PlasmaComponents.Label {

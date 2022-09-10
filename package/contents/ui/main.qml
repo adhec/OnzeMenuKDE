@@ -129,18 +129,15 @@ Item {
         favoritesModel: globalFavorites
         //mergeResults: true
         //runners: plasmoid.configuration.useExtraRunners ? new Array("services").concat(plasmoid.configuration.extraRunners) : "services"        
-        runners: {
-            var runners = new Array("services", "krunner_systemsettings");
-
-            runners = runners.concat(new Array("desktopsessions", "PowerDevil",
-                                               "calculator", "unitconverter"));
-
-            if (plasmoid.configuration.useExtraRunners) {
-                runners = runners.concat(plasmoid.configuration.extraRunners);
-            }
-
-            return runners;
-        }
+        //runners: {
+        //    var runners = new Array("services", "krunner_systemsettings");
+        //    runners = runners.concat(new Array("desktopsessions", "PowerDevil",
+        //                                       "calculator", "unitconverter"));
+        //    if (plasmoid.configuration.useExtraRunners) {
+        //        runners = runners.concat(plasmoid.configuration.extraRunners);
+        //    }
+        //    return runners;
+        //}
         deleteWhenEmpty: true
 
     }

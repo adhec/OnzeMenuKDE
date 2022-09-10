@@ -85,9 +85,11 @@ PlasmaCore.Dialog {
             x = pos.x;
             y = pos.y;
             requestActivate();
-            //animation1.start()
+            animation1.start()
         }else{
-            reset()
+            //reset()
+            focusScope.opacity = 0
+            focusScope.y = 250
         }
     }
 
@@ -121,9 +123,8 @@ PlasmaCore.Dialog {
     }
 
     function toggle(){
-        root.visible = false;
+        root.visible = !root.visible;
     }
-
 
     function popupPosition(width, height) {
         var screenAvail = plasmoid.availableScreenRect;
@@ -179,21 +180,20 @@ PlasmaCore.Dialog {
         return Qt.point(x, y);
     }
 
-
     FocusScope {
 
         id: focusScope
 
-        Layout.maximumWidth:  (tileSideWidth *  plasmoid.configuration.numberColumns) + units.largeSpacing * 2
-        Layout.minimumWidth:  (tileSideWidth *  plasmoid.configuration.numberColumns) + units.largeSpacing * 2
+        Layout.maximumWidth:  (tileSideWidth *  plasmoid.configuration.numberColumns) + _margin * 2
+        Layout.minimumWidth:  (tileSideWidth *  plasmoid.configuration.numberColumns) + _margin * 2
 
         Layout.minimumHeight: searchField.implicitHeight + topRow.height +  firstPage.height + footer.height + _margin * 5
         Layout.maximumHeight:  Layout.minimumHeight
+
         property bool done: false
 
-        ScaleAnimator{id: animation1 ; target: globalFavoritesGrid ; from: 0.9; to: 1; duration: units.shortDuration*2; easing.type: Easing.InOutQuad }
+        OpacityAnimator{id: animation1 ; target: focusScope ; from: 0; to: 1; duration: units.shortDuration*3;}
         XAnimator{id: animation2; target: mainColumn ; from: focusScope.width; to: units.smallSpacing; duration: units.shortDuration*2; easing.type: Easing.OutCubic }
-
 
         focus: true
 
@@ -663,7 +663,7 @@ PlasmaCore.Dialog {
         Rectangle{
             id: footer
             width: parent.width + backgroundSvg.margins.right + backgroundSvg.margins.left
-            height: root.iconSizeSquare + units.smallSpacing*2 // units.gridUnit * 3
+            height: root.iconSizeSquare + units.smallSpacing*4 // units.gridUnit * 3
             x: - backgroundSvg.margins.left
             y: parent.height - height + backgroundSvg.margins.bottom
             color: colorWithAlpha(theme.textColor,0.05)

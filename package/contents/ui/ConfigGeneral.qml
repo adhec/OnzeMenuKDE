@@ -37,8 +37,8 @@ Kirigami.FormLayout {
 
     id: configGeneral
 
-    width: childrenRect.width
-    height: childrenRect.height
+    //width: childrenRect.width
+    //height: childrenRect.height
 
     property string cfg_icon: plasmoid.configuration.icon
     property bool cfg_useCustomButtonImage: plasmoid.configuration.useCustomButtonImage
@@ -53,6 +53,7 @@ Kirigami.FormLayout {
     property alias cfg_numberRows: numberRows.value
     property alias cfg_labels2lines: labels2lines.checked
     property alias cfg_displayPosition: displayPosition.currentIndex
+    property alias cfg_iconSmooth: iconSmooth.checked
 
 
     property string cfg_defaultSize
@@ -204,6 +205,10 @@ Kirigami.FormLayout {
 
     }
 
+    CheckBox {
+        id: iconSmooth
+        Kirigami.FormData.label: i18n("Icons smooth")
+    }
 
     ComboBox {
         id: defaultFormatCombo

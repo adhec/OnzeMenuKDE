@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OnzeMenu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-24 21:20-0300\n"
+"POT-Creation-Date: 2022-05-28 23:47-0300\n"
 "PO-Revision-Date: 2022-04-27 17:59+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: \n"
@@ -95,6 +95,10 @@ msgstr "Aantal kolommen op overzicht"
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Number of rows (main grid)"
 msgstr "Aantal rijen op overzicht"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Icons smooth"
+msgstr ""
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Size of icons"

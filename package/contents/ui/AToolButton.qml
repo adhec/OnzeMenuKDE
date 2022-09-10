@@ -7,14 +7,15 @@ Rectangle{
 
     id:item
 
-    implicitHeight: units.gridUnit * 1.8
-    width: lb.implicitWidth + units.smallSpacing * 5 + icon.width
+    implicitHeight: Math.floor(units.gridUnit * 1.8)
+    width: Math.floor(lb.implicitWidth + units.smallSpacing * 5 + icon.width)
 
 
     border.width: 1
     border.color: mouseItem.containsMouse ? theme.highlightColor  : colorWithAlpha(theme.textColor,0.2)
-    radius: 4
+    radius: 2
     color: theme.backgroundColor
+    smooth: plasmoid.configuration.iconSmooth
 
 
     property alias text: lb.text
@@ -40,6 +41,7 @@ Rectangle{
             id: icon
             implicitHeight: units.gridUnit
             implicitWidth: implicitHeight
+            smooth: plasmoid.configuration.iconSmooth
         }
     }
 

@@ -75,6 +75,7 @@ Item {
         animated: false
         usesPlasmaTheme: item.GridView.view.usesPlasmaTheme
         source: model.decoration
+        smooth: plasmoid.configuration.iconSmooth
     }
 
     GridLayout {
