@@ -22,7 +22,7 @@ msgstr "OnzeMenu 11"
 
 #: ../metadata.desktop
 msgid "A configurable launcher menu 11"
-msgstr "Ein konfigurierbares Launcher-Menü 11"
+msgstr "Ein konfigurierbares Launcher-MenÃ¼ 11"
 
 #: ../contents/config/config.qml
 msgid "General"
@@ -34,15 +34,15 @@ msgstr "Von Favoriten entfernen"
 
 #: ../contents/ui/code/tools.js
 msgid "Add to Favorites"
-msgstr "Zu Favoriten hinzufügen"
+msgstr "Zu Favoriten hinzufÃ¼gen"
 
 #: ../contents/ui/code/tools.js
-msgid "Für alle Aktivitäten"
-msgstr ""
+msgid "On All Activities"
+msgstr "FÃ¼r alle AktivitÃ¤ten"
 
 #: ../contents/ui/code/tools.js
 msgid "On the Current Activity"
-msgstr "Für die aktuelle Aktivität"
+msgstr "FÃ¼r die aktuelle AktivitÃ¤t"
 
 #: ../contents/ui/code/tools.js
 msgid "Show in Favorites"
@@ -55,7 +55,7 @@ msgstr "Symbol:"
 #: ../contents/ui/ConfigGeneral.qml
 msgctxt "@item:inmenu Open icon chooser dialog"
 msgid "Choose..."
-msgstr "Auswählen..."
+msgstr "AuswÃ¤hlen..."
 
 #: ../contents/ui/ConfigGeneral.qml
 msgctxt "@item:inmenu Reset icon to default"
@@ -64,7 +64,7 @@ msgstr "Symbol entfernen"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Menu position"
-msgstr "Position des Menüs"
+msgstr "Position des MenÃ¼s"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Default"
@@ -96,7 +96,7 @@ msgstr "Anzahl der Reihen (Hauptraster)"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Size of icons"
-msgstr "Größe der Symbole"
+msgstr "GrÃ¶ÃŸe der Symbole"
 
 #: ../contents/ui/Footer.qml
 msgid "User Home"
@@ -112,15 +112,15 @@ msgstr "Bildschirm sperren"
 
 #: ../contents/ui/Footer.qml
 msgid "Leave ..."
-msgstr "Abmelden ..."
+msgstr "Herunterfahren"
 
 #: ../contents/ui/main.qml
-msgid "Edit Applications…"
+msgid "Edit Applicationsâ€¦"
 msgstr "Apps bearbeiten"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "Type here to search ..."
-msgstr "Tippen Sie hier für die Suche ..."
+msgstr "Suchbegriff hier eingeben"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "Search results"
@@ -128,7 +128,7 @@ msgstr "Suchergebnisse"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "Pinned"
-msgstr "Angeheftet"
+msgstr "Angepinnt"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "All apps"
@@ -140,7 +140,7 @@ msgstr "Empfohlen"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "Back"
-msgstr "Zurück"
+msgstr "ZurÃ¼ck"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "More"
