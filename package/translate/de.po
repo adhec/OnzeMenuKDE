@@ -128,7 +128,7 @@ msgstr "Suchergebnisse"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "Pinned"
-msgstr "Angepinnt"
+msgstr "Angeheftet"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "All apps"
