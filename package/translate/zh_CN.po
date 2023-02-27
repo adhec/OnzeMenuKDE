@@ -1,0 +1,148 @@
+# Translation of OnzeMenu in zh_CN
+# Copyright (C) 2022
+# This file is distributed under the same license as the OnzeMenu package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: OnzeMenu\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-27 12:16+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../metadata.desktop
+msgid "OnzeMenu 11"
+msgstr ""
+
+#: ../metadata.desktop
+msgid "A configurable launcher menu 11"
+msgstr "一个可自定义的类Win11开始菜单"
+
+#: ../contents/config/config.qml
+msgid "General"
+msgstr "通用"
+
+#: ../contents/ui/code/tools.js
+msgid "Remove from Favorites"
+msgstr "从收藏中移除"
+
+#: ../contents/ui/code/tools.js
+msgid "Add to Favorites"
+msgstr "加入收藏"
+
+#: ../contents/ui/code/tools.js
+msgid "On All Activities"
+msgstr "在所有活动中"
+
+#: ../contents/ui/code/tools.js
+msgid "On the Current Activity"
+msgstr "在当前活动中"
+
+#: ../contents/ui/code/tools.js
+msgid "Show in Favorites"
+msgstr "在收藏中显示"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Icon:"
+msgstr "图标："
+
+#: ../contents/ui/ConfigGeneral.qml
+msgctxt "@item:inmenu Open icon chooser dialog"
+msgid "Choose..."
+msgstr "选择..."
+
+#: ../contents/ui/ConfigGeneral.qml
+msgctxt "@item:inmenu Reset icon to default"
+msgid "Clear Icon"
+msgstr "清除图标"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Menu position"
+msgstr "菜单位置"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Default"
+msgstr "默认"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Center"
+msgstr "屏幕中央"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Center bottom"
+msgstr "底部居中"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Expand search to bookmarks, files and emails"
+msgstr "扩大搜索范围，包括书签、文件和电子邮件"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Show labels in two lines"
+msgstr "在两行间显示标签"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Number of columns (main grid)"
+msgstr "主网格列数"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Number of rows (main grid)"
+msgstr "主网格行数"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Size of icons"
+msgstr "图标大小"
+
+#: ../contents/ui/Footer.qml
+msgid "User Home"
+msgstr "主目录"
+
+#: ../contents/ui/Footer.qml
+msgid "System Preferences"
+msgstr "系统设置"
+
+#: ../contents/ui/Footer.qml
+msgid "Lock Screen"
+msgstr "锁定屏幕"
+
+#: ../contents/ui/Footer.qml
+msgid "Leave ..."
+msgstr ""
+
+#: ../contents/ui/main.qml
+msgid "Edit Applications…"
+msgstr "编辑应用程序"
+
+#: ../contents/ui/MenuRepresentation.qml
+msgid "Type here to search ..."
+msgstr "搜索..."
+
+#: ../contents/ui/MenuRepresentation.qml
+msgid "Search results"
+msgstr "搜索结果"
+
+#: ../contents/ui/MenuRepresentation.qml
+msgid "Pinned"
+msgstr "已固定"
+
+#: ../contents/ui/MenuRepresentation.qml
+msgid "All apps"
+msgstr "所有应用"
+
+#: ../contents/ui/MenuRepresentation.qml
+msgid "Recommended"
+msgstr "推荐"
+
+#: ../contents/ui/MenuRepresentation.qml
+msgid "Back"
+msgstr "返回"
+
+#: ../contents/ui/MenuRepresentation.qml
+msgid "More"
+msgstr "更多"
