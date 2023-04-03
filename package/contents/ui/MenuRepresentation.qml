@@ -438,6 +438,10 @@ PlasmaCore.Dialog {
                     PropertyAnimation { property: "height"; duration: units.shortDuration*2;}
                 }
                 Keys.onPressed: {
+                    if(event.modifiers & Qt.ControlModifier ||event.modifiers & Qt.ShiftModifier){
+                        searchField.focus = true;
+                        return
+                    }
 
                     if (event.key == Qt.Key_Tab) {
                         event.accepted = true;
@@ -531,6 +535,11 @@ PlasmaCore.Dialog {
                 }
 
                 Keys.onPressed: {
+
+                    if(event.modifiers & Qt.ControlModifier ||event.modifiers & Qt.ShiftModifier){
+                        searchField.focus = true;
+                        return
+                    }
 
                     if (event.key == Qt.Key_Tab) {
                         event.accepted = true;
@@ -633,6 +642,11 @@ PlasmaCore.Dialog {
 
 
                 Keys.onPressed: {
+                    if(event.modifiers & Qt.ControlModifier ||event.modifiers & Qt.ShiftModifier){
+                        searchField.focus = true;
+                        return
+                    }
+
                     if (event.key == Qt.Key_Tab) {
                         event.accepted = true;
                         globalFavoritesGrid.tryActivate(0,0)
