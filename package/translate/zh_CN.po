@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OnzeMenu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-27 12:16+0800\n"
+"POT-Creation-Date: 2023-04-02 23:21-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -94,6 +94,10 @@ msgstr "主网格列数"
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Number of rows (main grid)"
 msgstr "主网格行数"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Icons smooth"
+msgstr ""
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Size of icons"

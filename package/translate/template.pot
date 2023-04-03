@@ -1,5 +1,5 @@
 # Translation of OnzeMenu in LANGUAGE
-# Copyright (C) 2022
+# Copyright (C) 2023
 # This file is distributed under the same license as the OnzeMenu package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OnzeMenu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-28 23:47-0300\n"
+"POT-Creation-Date: 2023-04-02 23:21-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"

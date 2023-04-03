@@ -35,8 +35,11 @@ Or if you know how to make a pull request
 |  Locale  |  Lines  | % Done|
 |----------|---------|-------|
 | Template |      33 |       |
+| de       |   32/33 |   96% |
 | fr       |   32/33 |   96% |
 | ko       |   32/33 |   96% |
 | nl       |   32/33 |   96% |
+| pt-br    |   32/33 |   96% |
 | ru       |   32/33 |   96% |
 | tr       |   28/33 |   84% |
+| zh_CN    |   30/33 |   90% |

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OnzeMenu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-24 21:20-0300\n"
+"POT-Creation-Date: 2023-04-02 23:21-0300\n"
 "PO-Revision-Date: 2022-11-06 15:+0200\n"
 "Last-Translator: Pascal Dietrich <pascal.1.dietrich@hotmail.com>\n"
 "Language-Team: \n"
@@ -93,6 +93,10 @@ msgstr "Anzahl der Spalten (Hauptraster)"
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Number of rows (main grid)"
 msgstr "Anzahl der Reihen (Hauptraster)"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Icons smooth"
+msgstr ""
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Size of icons"

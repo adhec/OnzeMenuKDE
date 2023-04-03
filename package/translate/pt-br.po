@@ -1,4 +1,4 @@
-# Translation of OnzeMenu in tr_TR
+# Translation of OnzeMenu in pt
 # Copyright (C) 2022
 # This file is distributed under the same license as the OnzeMenu package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
@@ -6,17 +6,18 @@
 #, fuzzy
 msgid ""
 msgstr ""
+"Project-Id-Version: OnzeMenu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-02 23:21-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Language-Team:\n"
-"Language: tr\n"
+"Last-Translator: mateussmb mt.moreirabarros@gmail.com\n"
+"Language-Team: \n"
+"Language: PT-BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Language: tr_TR\n"
-"X-Source-Language: C\n"
+"X-Language: pt-br\n"
 
 #: ../metadata.desktop
 msgid "OnzeMenu 11"
@@ -24,77 +25,77 @@ msgstr "OnzeMenu 11"
 
 #: ../metadata.desktop
 msgid "A configurable launcher menu 11"
-msgstr "Yapılandırılabilir başlatıcı menüsü 11"
+msgstr "Um menu de lançador configurável 11"
 
 #: ../contents/config/config.qml
 msgid "General"
-msgstr "Genel"
+msgstr "Geral"
 
 #: ../contents/ui/code/tools.js
 msgid "Remove from Favorites"
-msgstr "Favorilerden Çıkar"
+msgstr "Remover dos Favoritos"
 
 #: ../contents/ui/code/tools.js
 msgid "Add to Favorites"
-msgstr "Favorilere Ekle"
+msgstr "Adicionar aos Favoritos"
 
 #: ../contents/ui/code/tools.js
 msgid "On All Activities"
-msgstr "Tüm Etkinliklerde"
+msgstr "Em Todas as Atividades"
 
 #: ../contents/ui/code/tools.js
 msgid "On the Current Activity"
-msgstr "Mevcut Etkinliklerde"
+msgstr "Na Atividade Atual"
 
 #: ../contents/ui/code/tools.js
 msgid "Show in Favorites"
-msgstr "Favorilerde Göster"
+msgstr "Mostrar nos Favoritos"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Icon:"
-msgstr "Simge:"
+msgstr "Ícone:"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgctxt "@item:inmenu Open icon chooser dialog"
 msgid "Choose..."
-msgstr "Seçmek..."
+msgstr "Escolher..."
 
 #: ../contents/ui/ConfigGeneral.qml
 msgctxt "@item:inmenu Reset icon to default"
 msgid "Clear Icon"
-msgstr "Simgeyi Temizle"
+msgstr "Limpar Ícone"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Menu position"
-msgstr ""
+msgstr "Posição do menu"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Default"
-msgstr "Varsayılan"
+msgstr "Padrão"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Center"
-msgstr "Orta"
+msgstr "Centro"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Center bottom"
-msgstr "Orta alt"
+msgstr "Centro inferior"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Expand search to bookmarks, files and emails"
-msgstr "Aramayı yer imlerine, dosyalara ve e-postalara genişletin"
+msgstr "Expandir a pesquisa para favoritos, arquivos e e-mails"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Show labels in two lines"
-msgstr "Etiketleri iki satırda göster"
+msgstr "Mostrar rótulos em duas linhas"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Number of columns (main grid)"
-msgstr ""
+msgstr "Número de colunas (grade principal)"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Number of rows (main grid)"
-msgstr ""
+msgstr "Número de linhas (grade principal)"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Icons smooth"
@@ -102,52 +103,52 @@ msgstr ""
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Size of icons"
-msgstr ""
+msgstr "Tamanho dos ícones"
 
 #: ../contents/ui/Footer.qml
 msgid "User Home"
-msgstr "Kullanıcı Ana Sayfası"
+msgstr "Página inicial do usuário"
 
 #: ../contents/ui/Footer.qml
 msgid "System Preferences"
-msgstr "Sistem Tercihleri"
+msgstr "Preferências do sistema"
 
 #: ../contents/ui/Footer.qml
 msgid "Lock Screen"
-msgstr "Kilit Ekranı"
+msgstr "Tela de bloqueio"
 
 #: ../contents/ui/Footer.qml
 msgid "Leave ..."
-msgstr "Çıkış ..."
+msgstr "Sair ..."
 
 #: ../contents/ui/main.qml
 msgid "Edit Applications…"
-msgstr "Uygulamaları Düzenle…"
+msgstr "Editar aplicativos..."
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "Type here to search ..."
-msgstr "Aramak için buraya yazınız ..."
+msgstr "Digite aqui para pesquisar..."
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "Search results"
-msgstr "Arama Sonuçları"
+msgstr "Resultados da busca"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "Pinned"
-msgstr "Sabitlenmiş"
+msgstr "Fixado"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "All apps"
-msgstr "Tüm uygulamalar"
+msgstr "Todos os aplicativos"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "Recommended"
-msgstr "Tavsiye edilen"
+msgstr "Recomendado"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "Back"
-msgstr "Geri"
+msgstr "Voltar"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "More"
-msgstr "Daha"
+msgstr "Mais"
