@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: OnzeMenu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-02 23:21-0300\n"
-"PO-Revision-Date: 2022-04-27 17:59+0200\n"
+"PO-Revision-Date: 2023-04-03 11:01+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: ../metadata.desktop
 msgid "OnzeMenu 11"
@@ -24,7 +24,7 @@ msgstr "OnzeMenu 11"
 
 #: ../metadata.desktop
 msgid "A configurable launcher menu 11"
-msgstr "Een instelbare programmastarter 11"
+msgstr "Instelbare programmastarter 11"
 
 #: ../contents/config/config.qml
 msgid "General"
@@ -98,7 +98,7 @@ msgstr "Aantal rijen op overzicht"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Icons smooth"
-msgstr ""
+msgstr "Pictogrammen gladstrijken"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Size of icons"
