@@ -1,0 +1,147 @@
+# Translation of OnzeMenu in German
+# Copyright (C) 2022
+# This file is distributed under the same license as the OnzeMenu package.
+# Pascal Dietrich <pascal.1.dietrich@hotmail.com>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OnzeMenu\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-24 21:20-0300\n"
+"PO-Revision-Date: 2022-11-06 15:+0200\n"
+"Last-Translator: Pascal Dietrich <pascal.1.dietrich@hotmail.com>\n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../metadata.desktop
+msgid "OnzeMenu 11"
+msgstr "OnzeMenu 11"
+
+#: ../metadata.desktop
+msgid "A configurable launcher menu 11"
+msgstr "Ein konfigurierbares Launcher-Menü 11"
+
+#: ../contents/config/config.qml
+msgid "General"
+msgstr "Allgemein"
+
+#: ../contents/ui/code/tools.js
+msgid "Remove from Favorites"
+msgstr "Von Favoriten entfernen"
+
+#: ../contents/ui/code/tools.js
+msgid "Add to Favorites"
+msgstr "Zu Favoriten hinzufügen"
+
+#: ../contents/ui/code/tools.js
+msgid "On All Activities"
+msgstr "Für alle Aktivitäten"
+
+#: ../contents/ui/code/tools.js
+msgid "On the Current Activity"
+msgstr "Für die aktuelle Aktivität"
+
+#: ../contents/ui/code/tools.js
+msgid "Show in Favorites"
+msgstr "In Favoriten anzeigen"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Icon:"
+msgstr "Symbol:"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgctxt "@item:inmenu Open icon chooser dialog"
+msgid "Choose..."
+msgstr "Auswählen..."
+
+#: ../contents/ui/ConfigGeneral.qml
+msgctxt "@item:inmenu Reset icon to default"
+msgid "Clear Icon"
+msgstr "Symbol entfernen"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Menu position"
+msgstr "Position des Menüs"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Default"
+msgstr "Standard"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Center"
+msgstr "Mitte"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Center bottom"
+msgstr "Mitte unten"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Expand search to bookmarks, files and emails"
+msgstr "Suche auf Lesezeichen, Dateien und E-Mails erweitern"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Show labels in two lines"
+msgstr "Beschriftungen in zwei Zeilen anzeigen"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Number of columns (main grid)"
+msgstr "Anzahl der Spalten (Hauptraster)"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Number of rows (main grid)"
+msgstr "Anzahl der Reihen (Hauptraster)"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Size of icons"
+msgstr "Größe der Symbole"
+
+#: ../contents/ui/Footer.qml
+msgid "User Home"
+msgstr "Benutzerordner"
+
+#: ../contents/ui/Footer.qml
+msgid "System Preferences"
+msgstr "Systemeinstellungen"
+
+#: ../contents/ui/Footer.qml
+msgid "Lock Screen"
+msgstr "Bildschirm sperren"
+
+#: ../contents/ui/Footer.qml
+msgid "Leave ..."
+msgstr "Herunterfahren"
+
+#: ../contents/ui/main.qml
+msgid "Edit Applications…"
+msgstr "Apps bearbeiten"
+
+#: ../contents/ui/MenuRepresentation.qml
+msgid "Type here to search ..."
+msgstr "Suchbegriff hier eingeben"
+
+#: ../contents/ui/MenuRepresentation.qml
+msgid "Search results"
+msgstr "Suchergebnisse"
+
+#: ../contents/ui/MenuRepresentation.qml
+msgid "Pinned"
+msgstr "Angeheftet"
+
+#: ../contents/ui/MenuRepresentation.qml
+msgid "All apps"
+msgstr "Alle Apps"
+
+#: ../contents/ui/MenuRepresentation.qml
+msgid "Recommended"
+msgstr "Empfohlen"
+
+#: ../contents/ui/MenuRepresentation.qml
+msgid "Back"
+msgstr "Zurück"
+
+#: ../contents/ui/MenuRepresentation.qml
+msgid "More"
+msgstr "Mehr"
