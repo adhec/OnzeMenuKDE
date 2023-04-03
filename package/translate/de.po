@@ -1,23 +1,20 @@
-# Translation of OnzeMenu in tr
+# Translation of OnzeMenu in German
 # Copyright (C) 2022
 # This file is distributed under the same license as the OnzeMenu package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Pascal Dietrich <pascal.1.dietrich@hotmail.com>, 2022.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: OnzeMenu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-28 23:47-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: mateussmb mt.moreirabarros@gmail.com
-"Language-Team: 
-"Language: PT-BR\n"
+"POT-Creation-Date: 2022-04-24 21:20-0300\n"
+"PO-Revision-Date: 2022-11-06 15:+0200\n"
+"Last-Translator: Pascal Dietrich <pascal.1.dietrich@hotmail.com>\n"
+"Language-Team: \n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Language: pt-br\n"
 
 #: ../metadata.desktop
 msgid "OnzeMenu 11"
@@ -25,145 +22,126 @@ msgstr "OnzeMenu 11"
 
 #: ../metadata.desktop
 msgid "A configurable launcher menu 11"
-msgstr "Um menu de lançador configurável 11"
+msgstr "Ein konfigurierbares Launcher-Menü 11"
 
 #: ../contents/config/config.qml
 msgid "General"
-msgstr "Geral"
+msgstr "Allgemein"
 
 #: ../contents/ui/code/tools.js
 msgid "Remove from Favorites"
-msgstr "Remover dos Favoritos"
+msgstr "Von Favoriten entfernen"
 
 #: ../contents/ui/code/tools.js
 msgid "Add to Favorites"
-msgstr "Adicionar aos Favoritos"
+msgstr "Zu Favoriten hinzufügen"
 
 #: ../contents/ui/code/tools.js
 msgid "On All Activities"
-msgstr "Em Todas as Atividades"
+msgstr "Für alle Aktivitäten"
 
 #: ../contents/ui/code/tools.js
 msgid "On the Current Activity"
-msgstr "Na Atividade Atual"
+msgstr "Für die aktuelle Aktivität"
 
 #: ../contents/ui/code/tools.js
 msgid "Show in Favorites"
-msgstr "Mostrar nos Favoritos"
+msgstr "In Favoriten anzeigen"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Icon:"
-msgstr "Ícone:"
+msgstr "Symbol:"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgctxt "@item:inmenu Open icon chooser dialog"
 msgid "Choose..."
-msgstr "Escolher..."
+msgstr "Auswählen..."
 
 #: ../contents/ui/ConfigGeneral.qml
 msgctxt "@item:inmenu Reset icon to default"
 msgid "Clear Icon"
-msgstr "Limpar Ícone"
+msgstr "Symbol entfernen"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Menu position"
-msgstr "Posição do menu"
+msgstr "Position des Menüs"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Default"
-msgstr "Padrão"
+msgstr "Standard"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Center"
-msgstr "Centro"
+msgstr "Mitte"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Center bottom"
-msgstr "Centro inferior"
+msgstr "Mitte unten"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Expand search to bookmarks, files and emails"
-msgstr "Expandir a pesquisa para favoritos, arquivos e e-mails"
+msgstr "Suche auf Lesezeichen, Dateien und E-Mails erweitern"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Show labels in two lines"
-msgstr "Mostrar rótulos em duas linhas"
+msgstr "Beschriftungen in zwei Zeilen anzeigen"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Number of columns (main grid)"
-msgstr "Número de colunas (grade principal)"
+msgstr "Anzahl der Spalten (Hauptraster)"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Number of rows (main grid)"
-msgstr "Número de linhas (grade principal)"
-
-#: ../contents/ui/ConfigGeneral.qml
-msgid "Icons smooth"
-msgstr ""
+msgstr "Anzahl der Reihen (Hauptraster)"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Size of icons"
-msgstr "Tamanho dos ícones"
+msgstr "Größe der Symbole"
 
 #: ../contents/ui/Footer.qml
 msgid "User Home"
-msgstr "Página inicial do usuário"
+msgstr "Benutzerordner"
 
 #: ../contents/ui/Footer.qml
 msgid "System Preferences"
-msgstr "Preferências do sistema"
+msgstr "Systemeinstellungen"
 
 #: ../contents/ui/Footer.qml
 msgid "Lock Screen"
-msgstr "Tela de bloqueio"
+msgstr "Bildschirm sperren"
 
 #: ../contents/ui/Footer.qml
 msgid "Leave ..."
-msgstr "Sair ..."
+msgstr "Herunterfahren"
 
 #: ../contents/ui/main.qml
 msgid "Edit Applications…"
-msgstr "Editar aplicativos..."
+msgstr "Apps bearbeiten"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "Type here to search ..."
-msgstr "Digite aqui para pesquisar..."
+msgstr "Suchbegriff hier eingeben"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "Search results"
-msgstr "Resultados da busca"
+msgstr "Suchergebnisse"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "Pinned"
-msgstr "Fixado"
+msgstr "Angeheftet"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "All apps"
-msgstr "Todos os aplicativos"
+msgstr "Alle Apps"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "Recommended"
-msgstr "Recomendado"
+msgstr "Empfohlen"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "Back"
-msgstr "Voltar"
+msgstr "Zurück"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "More"
-msgstr "Mais"
-
-#~ msgid "Menu position:"
-#~ msgstr "Posição do menu:"
-
-#~ msgid "Search"
-#~ msgstr "Pesquisar"
-
-#~ msgid "Grid"
-#~ msgstr "Grade"
-
-#~ msgid "Number of columns in grid"
-#~ msgstr "Número de colunas na grade"
-
-#~ msgid "Number of rows in grid"
-#~ msgstr "Número de linhas na grade"
+msgstr "Mehr"
