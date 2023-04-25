@@ -118,7 +118,6 @@ PlasmaCore.Dialog {
         allAppsGrid.model = rootModel.modelForRow(2)
         documentsFavoritesGrid.model = rootModel.modelForRow(0)
 
-        preloadAllAppsTimer.restart();
         globalFavoritesGrid.tryActivate(0,0)
         searchField.clear();
         readySearch = false
@@ -218,32 +217,6 @@ PlasmaCore.Dialog {
                 action: plasmoid.action("configure")
             }
         }
-
-        Timer {
-            id: preloadAllAppsTimer
-            property bool done: false
-            interval: 1000
-            repeat: false
-            onTriggered: {
-                // if (done) {
-                //     return;
-                // }
-                // for (var i = 0; i < rootModel.count; ++i) {
-                //     var model = rootModel.modelForRow(i);
-                //     if (model.description === "KICKER_ALL_MODEL") {
-                //         allAppsGrid.model = model;
-                //         done = true;
-                //         break;
-                //     }
-                // }
-            }
-            function defer() {
-                // if (!running && !done) {
-                //     restart();
-                // }
-            }
-        }
-
 
         PlasmaComponents3.TextField {
             id: searchField
@@ -422,10 +395,6 @@ PlasmaCore.Dialog {
                 onKeyNavDown: documentsFavoritesGrid.tryActivate(0,0)
                 onKeyNavUp: searchField.focus = true
 
-                onCurrentIndexChanged: {
-                    preloadAllAppsTimer.defer();
-                }
-
                 states: [
                     State {
                         name: "small"
@@ -517,10 +486,6 @@ PlasmaCore.Dialog {
                 onKeyNavUp: {
                     if (viewDocuments) searchField.focus = true
                     else  globalFavoritesGrid.tryActivate(0,0);
-                }
-
-                onCurrentIndexChanged: {
-                    preloadAllAppsTimer.defer();
                 }
 
                 states: [
