@@ -1,22 +1,21 @@
-# Translation of OnzeMenu in nl
-# Copyright (C) 2022
+# Translation of OnzeMenu in Ukrainian
+# Copyright (C) 2023
 # This file is distributed under the same license as the OnzeMenu package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Mykhailo Stetsiuk <yaBobJonez@gmail.com>, 2023.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: OnzeMenu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-02 23:21-0300\n"
-"PO-Revision-Date: 2023-04-03 11:01+0200\n"
-"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"PO-Revision-Date: 2023-04-07 HO:MI+ZONE\n"
+"Last-Translator: Mykhailo Stetsiuk <yaBobJonez@gmail.com>\n"
 "Language-Team: \n"
-"Language: nl\n"
+"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
 
 #: ../metadata.desktop
 msgid "OnzeMenu 11"
@@ -24,145 +23,130 @@ msgstr "OnzeMenu 11"
 
 #: ../metadata.desktop
 msgid "A configurable launcher menu 11"
-msgstr "Instelbare programmastarter 11"
+msgstr "Налаштовуваний засіб запуску програм 11"
 
 #: ../contents/config/config.qml
 msgid "General"
-msgstr "Algemeen"
+msgstr "Загальне"
 
 #: ../contents/ui/code/tools.js
 msgid "Remove from Favorites"
-msgstr "Verwijderen uit favorieten"
+msgstr "Вилучити з улюблених"
 
 #: ../contents/ui/code/tools.js
 msgid "Add to Favorites"
-msgstr "Toevoegen aan favorieten"
+msgstr "Додати до улюблених"
 
 #: ../contents/ui/code/tools.js
 msgid "On All Activities"
-msgstr "Op alle activiteiten"
+msgstr "У всіх просторах дій"
 
 #: ../contents/ui/code/tools.js
 msgid "On the Current Activity"
-msgstr "Op de huidige activiteit"
+msgstr "У поточному просторі дій"
 
 #: ../contents/ui/code/tools.js
 msgid "Show in Favorites"
-msgstr "Toevoegen aan favorieten"
+msgstr "Показати в улюблених"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Icon:"
-msgstr "Pictogram:"
+msgstr "Піктограма:"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgctxt "@item:inmenu Open icon chooser dialog"
 msgid "Choose..."
-msgstr "Kiezen…"
+msgstr "Вибрати..."
 
 #: ../contents/ui/ConfigGeneral.qml
 msgctxt "@item:inmenu Reset icon to default"
 msgid "Clear Icon"
-msgstr "Pictogram verwijderen"
+msgstr "Прибрати піктограму"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Menu position"
-msgstr "Menulocatie"
+msgstr "Розташування меню"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Default"
-msgstr "Standaard"
+msgstr "За замовчуванням"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Center"
-msgstr "Gecentreerd"
+msgstr "Центр"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Center bottom"
-msgstr "Gecentreerd (onderaan)"
+msgstr "Центр знизу"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Expand search to bookmarks, files and emails"
-msgstr "Ook bladwijzers, bestanden en e-mails doorzoeken"
+msgstr "Розширення пошуку на закладки, файли та електронну пошту"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Show labels in two lines"
-msgstr "Labeltekst verdelen over twee regels"
+msgstr "Відображати пункти у два рядки"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Number of columns (main grid)"
-msgstr "Aantal kolommen op overzicht"
+msgstr "Кількість стовпців"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Number of rows (main grid)"
-msgstr "Aantal rijen op overzicht"
+msgstr "Кількість рядків"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Icons smooth"
-msgstr "Pictogrammen gladstrijken"
+msgstr "Згладжування піктограм"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Size of icons"
-msgstr "Pictogramgrootte"
+msgstr "Розмір піктограм"
 
 #: ../contents/ui/Footer.qml
 msgid "User Home"
-msgstr "Persoonlijke map"
+msgstr "Домівка"
 
 #: ../contents/ui/Footer.qml
 msgid "System Preferences"
-msgstr "Systeeminstellingen"
+msgstr "Системні параметри"
 
 #: ../contents/ui/Footer.qml
 msgid "Lock Screen"
-msgstr "Scherm vergrendelen"
+msgstr "Заблокувати"
 
 #: ../contents/ui/Footer.qml
 msgid "Leave ..."
-msgstr "Verlaten…"
+msgstr "Вийти..."
 
 #: ../contents/ui/main.qml
 msgid "Edit Applications…"
-msgstr "Programma's bewerken…"
+msgstr "Змінити список програм…"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "Type here to search ..."
-msgstr "Typ hier om te zoeken…"
+msgstr "Введіть текст для пошуку"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "Search results"
-msgstr "Zoekresultaten"
+msgstr "Результати пошуку"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "Pinned"
-msgstr "Vastgemaakt"
+msgstr "Закріплені"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "All apps"
-msgstr "Alle programma's"
+msgstr "Усі програми"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "Recommended"
-msgstr "Aanbevolen"
+msgstr "Рекомендовані"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "Back"
-msgstr "Terug"
+msgstr "Назад"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "More"
-msgstr "Meer"
-
-#~ msgid "Menu position:"
-#~ msgstr "Menulocatie:"
-
-#~ msgid "Search"
-#~ msgstr "Zoeken"
-
-#~ msgid "Grid"
-#~ msgstr "Rooster"
-
-#~ msgid "Number of columns in grid"
-#~ msgstr "Aantal kolommen op rooster"
-
-#~ msgid "Number of rows in grid"
-#~ msgstr "Aantal rijen op rooster"
+msgstr "Додатково"
