@@ -33,17 +33,11 @@ Item {
 
     signal reset
 
-    property bool isDash: false
-
     Plasmoid.preferredRepresentation: Plasmoid.fullRepresentation
-
     Plasmoid.compactRepresentation: null
     Plasmoid.fullRepresentation: compactRepresentation
 
     property Item dragSource: null
-
-    property QtObject globalFavorites: rootModel.favoritesModel
-    property QtObject systemFavorites: rootModel.systemFavoritesModel
 
     function action_menuedit() {
         processRunner.runMenuEditor();
@@ -59,87 +53,52 @@ Item {
         MenuRepresentation {}
     }
 
-    Kicker.RootModel {
+    readonly property Kicker.RootModel rootModel: Kicker.RootModel {
         id: rootModel
-
         autoPopulate: false
-        appNameFormat: 0
-        flat: true
 
-        showSeparators: false
         appletInterface: plasmoid
 
-        showAllApps: true
-        showAllAppsCategorized: true
-        showTopLevelItems: false
+        flat: true // have categories, but no subcategories
+        sorted: plasmoid.configuration.alphaSort
+        showSeparators: false
+        showTopLevelItems: true
 
-        showRecentApps: true
+        showAllApps: true
+        //showAllAppsCategorized: false
+        showAllAppsCategorized: true
+        showRecentApps: false
         showRecentDocs: true
         showRecentContacts: false
+        showPowerSession: false
+        showFavoritesPlaceholder: true
 
         Component.onCompleted: {
-            if ("initForClient" in favoritesModel) {
-                favoritesModel.initForClient("org.kde.plasma.kicker.favorites.instance-" + plasmoid.id)
+            favoritesModel.initForClient("org.kde.plasma.kickoff.favorites.instance-" + plasmoid.id)
 
-                if (!plasmoid.configuration.favoritesPortedToKAstats) {
-                    favoritesModel.portOldFavorites(plasmoid.configuration.favoriteApps);
-                    plasmoid.configuration.favoritesPortedToKAstats = true;
+            if (!plasmoid.configuration.favoritesPortedToKAstats) {
+                if (favoritesModel.count < 1) {
+                    favoritesModel.portOldFavorites(plasmoid.configuration.favorites);
                 }
-            } else {
-                favoritesModel.favorites = plasmoid.configuration.favoriteApps;
+                plasmoid.configuration.favoritesPortedToKAstats = true;
             }
-
-            favoritesModel.maxFavorites = pageSize;
-            rootModel.refresh();
         }
     }
 
-    Connections {
-        target: globalFavorites
-
-        onFavoritesChanged: {
-            plasmoid.configuration.favoriteApps = target.favorites;
-        }
+    readonly property Kicker.RecentUsageModel frequentUsageModel: Kicker.RecentUsageModel {
+        favoritesModel: rootModel.favoritesModel
+        ordering: 1 // Popular / Frequently Used
     }
 
-    Connections {
-        target: systemFavorites
-
-        onFavoritesChanged: {
-            plasmoid.configuration.favoriteSystemActions = target.favorites;
-        }
-    }
-
-    Connections {
-        target: plasmoid.configuration
-
-        onFavoriteAppsChanged: {
-            globalFavorites.favorites = plasmoid.configuration.favoriteApps;
-        }
-
-        onFavoriteSystemActionsChanged: {
-            systemFavorites.favorites = plasmoid.configuration.favoriteSystemActions;
-        }
+    readonly property Kicker.RecentUsageModel recentUsageModel: Kicker.RecentUsageModel {
+        favoritesModel: rootModel.favoritesModel
     }
 
     Kicker.RunnerModel {
         id: runnerModel
-
         appletInterface: plasmoid
-        favoritesModel: globalFavorites
-        //mergeResults: true
-        //runners: plasmoid.configuration.useExtraRunners ? new Array("services").concat(plasmoid.configuration.extraRunners) : "services"        
-        //runners: {
-        //    var runners = new Array("services", "krunner_systemsettings");
-        //    runners = runners.concat(new Array("desktopsessions", "PowerDevil",
-        //                                       "calculator", "unitconverter"));
-        //    if (plasmoid.configuration.useExtraRunners) {
-        //        runners = runners.concat(plasmoid.configuration.extraRunners);
-        //    }
-        //    return runners;
-        //}
-        deleteWhenEmpty: true
-
+        favoritesModel: rootModel.favoritesModel
+        mergeResults: true
     }
 
     Kicker.DragHelper {
@@ -152,6 +111,13 @@ Item {
 
     Kicker.WindowSystem {
         id: windowSystem
+    }
+
+    Connections {
+        target: plasmoid.configuration
+        onHiddenApplicationsChanged: {
+            rootModel.refresh();
+        }
     }
 
     PlasmaCore.FrameSvgItem {
@@ -205,7 +171,7 @@ Item {
         //dragHelper.dropped.connect(resetDragSource);
 
         if (plasmoid.hasOwnProperty("activationTogglesExpanded")) {
-            plasmoid.activationTogglesExpanded = false//!kicker.isDash
+            plasmoid.activationTogglesExpanded = false
         }
 
         windowSystem.focusIn.connect(enableHideOnWindowDeactivate);
@@ -216,9 +182,7 @@ Item {
         }
 
         //updateSvgMetrics();
-        PlasmaCore.Theme.themeChanged.connect(updateSvgMetrics);
-        rootModel.refreshed.connect(reset);
-
+        //PlasmaCore.Theme.themeChanged.connect(updateSvgMetrics);
         dragHelper.dropped.connect(resetDragSource);
     }
 }

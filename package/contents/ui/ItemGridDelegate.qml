@@ -68,18 +68,7 @@ Item {
         colorGroup: PlasmaCore.Theme.ComplementaryColorGroup
         animated: false
         usesPlasmaTheme: item.GridView.view.usesPlasmaTheme
-        source:  {
-            return  model.decoration
-            //if (model.display.indexOf(".") === -1 ) {
-            //    var s = "-" + model.url
-            //    if( s[s.length - 8 ] == "."){
-            //        return  model.decoration
-            //    }
-            //    return "folder"
-            //}else{
-            //    return  model.decoration
-            //}
-        }
+        source:  model.decoration
         smooth: plasmoid.configuration.iconSmooth
     }
 
@@ -88,7 +77,7 @@ Item {
         visible: showLabel
         anchors {
             left: icon.right
-            leftMargin: units.smallSpacing
+            leftMargin: units.smallSpacing*2
             //top: icon.top
             verticalCenter: icon.verticalCenter
         }
@@ -101,7 +90,7 @@ Item {
     }
     PlasmaComponents.Label {
         anchors.right: parent.right
-        anchors.rightMargin: units.smallSpacing
+        anchors.rightMargin: units.smallSpacing * 2
         anchors.verticalCenter: label.verticalCenter
         visible: showLabel
         horizontalAlignment:  Text.AlignRight
@@ -109,7 +98,7 @@ Item {
         width: parent.width - label.implicitWidth - icon.width * 2
         elide: Text.ElideRight
         wrapMode: Text.Wrap
-        color: colorWithAlpha(theme.textColor,0.6)
+        color: colorWithAlpha(theme.textColor,0.8)
         text: model.description
     }
 

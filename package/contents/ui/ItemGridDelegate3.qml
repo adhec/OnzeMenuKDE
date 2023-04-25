@@ -108,7 +108,7 @@ Item {
             width: 10
             elide: Text.ElideRight
             wrapMode: Text.Wrap
-            color: colorWithAlpha(theme.textColor,0.6)
+            color: colorWithAlpha(theme.textColor,0.8)
             text: model.description
             font.pixelSize: label.font.pixelSize - 2
         }
@@ -133,7 +133,6 @@ Item {
                 GridView.view.model.trigger(index, "", null);
                 root.toggle();
             }
-
             itemGrid.itemActivated(index, "", null);
         }
     }

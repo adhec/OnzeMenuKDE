@@ -115,6 +115,9 @@ PlasmaCore.Dialog {
     }
 
     function reset() {
+        allAppsGrid.model = rootModel.modelForRow(2)
+        documentsFavoritesGrid.model = rootModel.modelForRow(0)
+
         preloadAllAppsTimer.restart();
         globalFavoritesGrid.tryActivate(0,0)
         searchField.clear();
@@ -222,24 +225,25 @@ PlasmaCore.Dialog {
             interval: 1000
             repeat: false
             onTriggered: {
-                if (done) {
-                    return;
-                }
-                for (var i = 0; i < rootModel.count; ++i) {
-                    var model = rootModel.modelForRow(i);
-                    if (model.description === "KICKER_ALL_MODEL") {
-                        allAppsGrid.model = model;
-                        done = true;
-                        break;
-                    }
-                }
+                // if (done) {
+                //     return;
+                // }
+                // for (var i = 0; i < rootModel.count; ++i) {
+                //     var model = rootModel.modelForRow(i);
+                //     if (model.description === "KICKER_ALL_MODEL") {
+                //         allAppsGrid.model = model;
+                //         done = true;
+                //         break;
+                //     }
+                // }
             }
             function defer() {
-                if (!running && !done) {
-                    restart();
-                }
+                // if (!running && !done) {
+                //     restart();
+                // }
             }
         }
+
 
         PlasmaComponents3.TextField {
             id: searchField
@@ -260,10 +264,8 @@ PlasmaCore.Dialog {
                 border.width: 1
                 border.color: colorWithAlpha(theme.textColor,0.05)
             }
-            onTextChanged: {
-                runnerModel.query = text;
+            onTextChanged: runnerModel.query = text;
 
-            }
             function clear() {
                 text = "";
             }
@@ -398,6 +400,8 @@ PlasmaCore.Dialog {
             anchors.horizontalCenter: parent.horizontalCenter
             spacing:  _margin
             visible: !readySearch && !searching
+
+
             ItemGridView {
                 id: globalFavoritesGrid
                 width: tileSideWidth *  plasmoid.configuration.numberColumns
@@ -407,7 +411,8 @@ PlasmaCore.Dialog {
                 cellHeight:  tileSideHeight
                 iconSize:    root.iconSizeSquare
                 square: true
-                model: globalFavorites
+                //model: globalFavorites
+                model: rootModel.favoritesModel
                 dropEnabled: true
                 usesPlasmaTheme: true
                 verticalScrollBarPolicy: Qt.ScrollBarAlwaysOff
@@ -504,7 +509,7 @@ PlasmaCore.Dialog {
                 cellWidth:   Math.floor(parent.width * 0.5)
                 cellHeight:  tileHeightDocuments
                 square: false
-                model:  rootModel.modelForRow(1)
+                //model: rootModel.modelForRow(0)// recentUsageModel
                 dropEnabled: true
                 usesPlasmaTheme: false
                 verticalScrollBarPolicy: Qt.ScrollBarAlwaysOff
@@ -608,7 +613,7 @@ PlasmaCore.Dialog {
                     opacity: searching ? 0 : 1
                     aCellWidth: parent.width - units.largeSpacing
                     aCellHeight: iconSize + units.smallSpacing*2
-                    model: rootModel.modelForRow(2);
+                    //model: rootModel.modelForRow(1)//// rootModel.modelForRow(2);
                     onOpacityChanged: {
                         if (opacity == 1.0) {
                             allAppsGrid.flickableItem.contentY = 0;
@@ -708,8 +713,9 @@ PlasmaCore.Dialog {
     }
 
     Component.onCompleted: {
-        rootModel.refreshed.connect(reset)
-        kicker.reset.connect(reset);
+        //rootModel.refreshed.connect(reset) // TODO
+        //kicker.reset.connect(reset);
         reset();
+        rootModel.refresh();
     }
 }
