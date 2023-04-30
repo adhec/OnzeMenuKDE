@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OnzeMenu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-02 23:21-0300\n"
+"POT-Creation-Date: 2023-04-30 00:33-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: mateussmb mt.moreirabarros@gmail.com\n"
 "Language-Team: \n"
@@ -82,12 +82,24 @@ msgid "Center bottom"
 msgstr "Centro inferior"
 
 #: ../contents/ui/ConfigGeneral.qml
+msgid "Main section"
+msgstr ""
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Show recent applications"
+msgstr ""
+
+#: ../contents/ui/ConfigGeneral.qml
 msgid "Expand search to bookmarks, files and emails"
 msgstr "Expandir a pesquisa para favoritos, arquivos e e-mails"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Show labels in two lines"
 msgstr "Mostrar rótulos em duas linhas"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Hide recent documents"
+msgstr ""
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Number of columns (main grid)"
@@ -102,8 +114,20 @@ msgid "Icons smooth"
 msgstr ""
 
 #: ../contents/ui/ConfigGeneral.qml
+msgid "Pull Up Animation"
+msgstr ""
+
+#: ../contents/ui/ConfigGeneral.qml
 msgid "Size of icons"
 msgstr "Tamanho dos ícones"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Unhide all applications"
+msgstr ""
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Unhidden!"
+msgstr ""
 
 #: ../contents/ui/Footer.qml
 msgid "User Home"
@@ -140,6 +164,10 @@ msgstr "Fixado"
 #: ../contents/ui/MenuRepresentation.qml
 msgid "All apps"
 msgstr "Todos os aplicativos"
+
+#: ../contents/ui/MenuRepresentation.qml
+msgid "Date and time"
+msgstr ""
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "Recommended"

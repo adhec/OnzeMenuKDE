@@ -3,7 +3,7 @@ qml.qrc
 
 build*
 check*
-
+test*
 
 # Prerequisites
 *.d

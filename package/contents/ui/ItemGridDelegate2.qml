@@ -63,7 +63,7 @@ Item {
         id: icon
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
-        anchors.verticalCenterOffset: -units.gridUnit
+        anchors.verticalCenterOffset: - PlasmaCore.Units.gridUnit
         width:  iconSize
         height: width
         colorGroup: PlasmaCore.Theme.ComplementaryColorGroup
@@ -79,11 +79,11 @@ Item {
         anchors {
             horizontalCenter: icon.horizontalCenter
             top: icon.bottom
-            topMargin: units.smallSpacing
+            topMargin: PlasmaCore.Units.smallSpacing
         }
-        width: parent.width - units.largeSpacing
+        width: parent.width - PlasmaCore.Units.largeSpacing
         maximumLineCount: 2
-        height: units.gridUnit * 2
+        height: PlasmaCore.Units.gridUnit * 2
         elide: Text.ElideRight
         horizontalAlignment: Qt.AlignHCenter
         verticalAlignment: Qt.AlignTop

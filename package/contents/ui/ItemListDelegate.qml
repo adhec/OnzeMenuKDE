@@ -187,7 +187,7 @@ Item {
 
         height: parent.height
 
-        spacing: units.smallSpacing * 2
+        spacing: PlasmaCore.Units.smallSpacing * 2
         readonly property real actualSpacing: ((icon.visible ? 1 : 0) * spacing) + ((arrow.visible ? 1 : 0) * spacing)
 
         LayoutMirroring.enabled: (Qt.application.layoutDirection == Qt.RightToLeft)
@@ -197,7 +197,7 @@ Item {
 
             anchors.verticalCenter: parent.verticalCenter
 
-            width: visible ? units.iconSizes.small : 0
+            width: visible ? PlasmaCore.Units.iconSizes.small : 0
             height: width
 
             visible: iconsEnabled
@@ -231,7 +231,7 @@ Item {
 
             anchors.verticalCenter: parent.verticalCenter
 
-            width: visible ? units.iconSizes.small : 0
+            width: visible ? PlasmaCore.Units.iconSizes.small : 0
             height: width
 
             visible: hasChildren

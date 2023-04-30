@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
-      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
   <kcfgfile name=""/>
-
   <group name="General">
     <entry name="displayPosition" type="Enum">
-    <label>Position.</label>
-    <choices name="Settings::displayPosition">
-      <choice name="Default" />
-      <choice name="Center" />
-      <choice name="CenterBottom" />
-    </choices>
-    <default>2</default>
+      <label>Position.</label>
+      <choices name="Settings::displayPosition">
+        <choice name="Default"/>
+        <choice name="Center"/>
+        <choice name="CenterBottom"/>
+      </choices>
+      <default>2</default>
     </entry>
-
     <entry name="icon" type="String">
       <default>start-here-kde</default>
     </entry>
@@ -23,29 +18,25 @@
       <default>false</default>
     </entry>
     <entry name="customButtonImage" type="Url">
-      <default></default>
+      <default/>
     </entry>
-
     <entry name="showFilterList" type="Bool">
       <default>true</default>
     </entry>
-
     <entry name="appNameFormat" type="Int">
       <default>0</default>
     </entry>
     <entry name="limitDepth" type="Bool">
       <default>false</default>
     </entry>
-
     <entry name="numberColumns" type="Int">
-    <default>6</default>
+      <default>6</default>
     </entry>
-
     <entry name="numberRows" type="Int">
-    <default>3</default>
+      <default>3</default>
     </entry>
     <entry name="defaultSize" type="String">
-    <default>Medium</default>
+      <default>Medium</default>
     </entry>
     <entry name="favoriteApps" type="StringList">
       <default>preferred://browser,kontact.desktop,systemsettings.desktop,org.kde.dolphin.desktop,ktp-contactlist.desktop,org.kde.kate.desktop</default>
@@ -54,10 +45,18 @@
       <default>logout,lock-screen,reboot,shutdown</default>
     </entry>
     <entry name="hiddenApplications" type="StringList">
-      <default></default>
+      <default/>
     </entry>
-
     <entry name="useExtraRunners" type="Bool">
+      <default>true</default>
+    </entry>
+    <entry name="hideRecentDocs" type="Bool">
+      <default>false</default>
+    </entry>
+    <entry name="showRecentApps" type="Bool">
+      <default>false</default>
+    </entry>
+    <entry name="pullupAnimation" type="Bool">
       <default>true</default>
     </entry>
     <entry name="extraRunners" type="StringList">
@@ -80,21 +79,17 @@
       <default>false</default>
     </entry>
     <entry name="showAtCenter" type="Bool">
-       <default>true</default>
-   </entry>
-
+      <default>true</default>
+    </entry>
     <entry name="showFavoritesFirst" type="Bool">
-       <default>false</default>
-   </entry>
-
+      <default>false</default>
+    </entry>
     <entry name="favoritesPortedToKAstats" type="Bool">
       <label>Are the favorites ported to use KActivitiesStats to allow per-activity favorites</label>
       <default>false</default>
     </entry>
-
     <entry name="viewUser" type="Bool">
-    <default>true</default>
+      <default>true</default>
     </entry>
-
   </group>
 </kcfg>

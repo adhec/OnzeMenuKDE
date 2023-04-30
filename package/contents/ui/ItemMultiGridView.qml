@@ -26,14 +26,7 @@ import org.kde.plasma.private.kicker 0.1 as Kicker
 
 PlasmaExtras.ScrollArea {
     id: itemMultiGrid
-
-    //anchors {
-    //    top: parent.top
-    //}
     anchors.fill: parent
-
-    //width: parent.width
-
     implicitHeight: itemColumn.implicitHeight
 
     signal keyNavLeft(int subGridIndex)
@@ -67,6 +60,7 @@ PlasmaExtras.ScrollArea {
     }
 
     function tryActivate(row, col) { // FIXME TODO: Cleanup messy algo.
+        console.log("on try activate multigrid")
         if (flickableItem.contentY > 0) {
             row = 0;
         }
@@ -94,14 +88,14 @@ PlasmaExtras.ScrollArea {
     Column {
         id: itemColumn
 
-        width: itemMultiGrid.width //- units.gridUnit
+        width: itemMultiGrid.width //- PlasmaCore.Units.gridUnit
 
         Repeater {
             id: repeater
 
             delegate: Item {
                 width: itemColumn.width
-                height:  gridViewLabel.height + gridView.height + (index == repeater.count - 1 ? 0 : units.smallSpacing)
+                height:  gridViewLabel.height + gridView.height + (index == repeater.count - 1 ? 0 : PlasmaCore.Units.smallSpacing)
                 //visible:  gridView.count > 0
 
                 property Item itemGrid: gridView
@@ -110,7 +104,7 @@ PlasmaExtras.ScrollArea {
                     id: gridViewLabel
                     anchors.top: parent.top
                     anchors.left: parent.left
-                    anchors.leftMargin: units.smallSpacing * 4
+                    anchors.leftMargin: PlasmaCore.Units.smallSpacing
                     height: dummyHeading.height
                     wrapMode: Text.NoWrap
                     color: theme.textColor
@@ -118,14 +112,14 @@ PlasmaExtras.ScrollArea {
                     font.weight: Font.DemiBold
                     level: 5
                     verticalAlignment: Qt.AlignVCenter
-                    text: repeater.model.modelForRow(index).description
+                    text: repeater.model.modelForRow(index) ? repeater.model.modelForRow(index).description : ""
                 }
 
                 Rectangle{
                     anchors.right: parent.right
                     anchors.verticalCenter: gridViewLabel.verticalCenter
                     height: 1
-                    width: parent.width - gridViewLabel.implicitWidth - units.largeSpacing*2
+                    width: parent.width - gridViewLabel.implicitWidth - PlasmaCore.Units.largeSpacing*2
                     color: theme.textColor
                     opacity: 0.15
                 }
@@ -141,7 +135,7 @@ PlasmaExtras.ScrollArea {
 
                     anchors {
                         top: gridViewLabel.bottom
-                        topMargin: units.smallSpacing
+                        topMargin: PlasmaCore.Units.smallSpacing
                     }
 
                     width: parent.width

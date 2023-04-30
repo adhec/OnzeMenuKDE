@@ -61,7 +61,7 @@ Item {
     PlasmaCore.IconItem {
         id: icon
         anchors.left: parent.left
-        anchors.leftMargin: units.smallSpacing
+        anchors.leftMargin: PlasmaCore.Units.smallSpacing
         anchors.verticalCenter: parent.verticalCenter
         width: iconSize
         height: width
@@ -77,7 +77,7 @@ Item {
         visible: showLabel
         anchors {
             left: icon.right
-            leftMargin: units.smallSpacing*2
+            leftMargin: PlasmaCore.Units.smallSpacing*2
             //top: icon.top
             verticalCenter: icon.verticalCenter
         }
@@ -85,12 +85,12 @@ Item {
         elide: Text.ElideRight
         wrapMode: Text.Wrap
         color: theme.textColor
-        width: parent.width - icon.width - units.largeSpacing
+        width: parent.width - icon.width - PlasmaCore.Units.largeSpacing
         text: ("name" in model ? model.name : model.display)
     }
     PlasmaComponents.Label {
         anchors.right: parent.right
-        anchors.rightMargin: units.smallSpacing * 2
+        anchors.rightMargin: PlasmaCore.Units.smallSpacing * 2
         anchors.verticalCenter: label.verticalCenter
         visible: showLabel
         horizontalAlignment:  Text.AlignRight

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-02 23:21-0300\n"
+"POT-Creation-Date: 2023-04-30 00:33-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language-Team:\n"
 "Language: tr\n"
@@ -81,12 +81,24 @@ msgid "Center bottom"
 msgstr "Orta alt"
 
 #: ../contents/ui/ConfigGeneral.qml
+msgid "Main section"
+msgstr ""
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Show recent applications"
+msgstr ""
+
+#: ../contents/ui/ConfigGeneral.qml
 msgid "Expand search to bookmarks, files and emails"
 msgstr "Aramayı yer imlerine, dosyalara ve e-postalara genişletin"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Show labels in two lines"
 msgstr "Etiketleri iki satırda göster"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Hide recent documents"
+msgstr ""
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Number of columns (main grid)"
@@ -101,7 +113,19 @@ msgid "Icons smooth"
 msgstr ""
 
 #: ../contents/ui/ConfigGeneral.qml
+msgid "Pull Up Animation"
+msgstr ""
+
+#: ../contents/ui/ConfigGeneral.qml
 msgid "Size of icons"
+msgstr ""
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Unhide all applications"
+msgstr ""
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Unhidden!"
 msgstr ""
 
 #: ../contents/ui/Footer.qml
@@ -139,6 +163,10 @@ msgstr "Sabitlenmiş"
 #: ../contents/ui/MenuRepresentation.qml
 msgid "All apps"
 msgstr "Tüm uygulamalar"
+
+#: ../contents/ui/MenuRepresentation.qml
+msgid "Date and time"
+msgstr ""
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "Recommended"

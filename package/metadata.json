@@ -1,0 +1,29 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "adhemarks@gmail.com",
+                "Name": "Adhe"
+            }
+        ],
+        "Category": "Application Launchers",
+        "Description": "A configurable launcher menu 11",
+        "Description[x-test]": "xxA configurable launcher menu 11xx",
+        "EnabledByDefault": true,
+        "Icon": "start-here-kde",
+        "Id": "OnzeMenu",
+        "License": "GPL-2.0+",
+        "Name": "OnzeMenu",
+        "Name[x-test]": "xxOnze Menuxx",
+        "ServiceTypes": [
+            "Plasma/Applet"
+        ],
+        "Version": "1.0",
+        "Website": ""
+    },
+    "X-Plasma-API": "declarativeappletscript",
+    "X-Plasma-MainScript": "ui/main.qml",
+    "X-Plasma-Provides": [
+        "org.kde.plasma.launchermenu"
+    ]
+}

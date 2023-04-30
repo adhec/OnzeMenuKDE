@@ -7,8 +7,8 @@ Rectangle{
 
     id:item
 
-    implicitHeight: Math.floor(units.gridUnit * 1.8)
-    width: Math.floor(lb.implicitWidth + units.smallSpacing * 5 + icon.width)
+    implicitHeight: Math.floor( PlasmaCore.Units.gridUnit * 1.8)
+    width: Math.floor(lb.implicitWidth + PlasmaCore.Units.smallSpacing * 5 + icon.width)
 
 
     border.width: 1
@@ -28,9 +28,9 @@ Rectangle{
     RowLayout{
         id: row
         anchors.fill: parent
-        anchors.leftMargin: units.smallSpacing * 2
-        anchors.rightMargin: units.smallSpacing * 2
-        spacing: units.smallSpacing
+        anchors.leftMargin: PlasmaCore.Units.smallSpacing * 2
+        anchors.rightMargin: PlasmaCore.Units.smallSpacing * 2
+        spacing: PlasmaCore.Units.smallSpacing
         LayoutMirroring.enabled: mirror
 
         Label{
@@ -39,7 +39,7 @@ Rectangle{
         }
         PlasmaCore.IconItem {
             id: icon
-            implicitHeight: units.gridUnit
+            implicitHeight: PlasmaCore.Units.gridUnit
             implicitWidth: implicitHeight
             smooth: plasmoid.configuration.iconSmooth
         }

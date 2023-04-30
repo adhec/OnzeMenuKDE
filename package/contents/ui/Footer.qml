@@ -23,7 +23,7 @@ import org.kde.plasma.private.quicklaunch 1.0
 
 RowLayout{
 
-    spacing: units.largeSpacing
+    spacing: PlasmaCore.Units.largeSpacing
 
     KCoreAddons.KUser {   id: kuser  }
     Logic {   id: logic }

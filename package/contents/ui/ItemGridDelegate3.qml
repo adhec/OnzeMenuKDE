@@ -68,8 +68,8 @@ Item {
         id: icon
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
-        anchors.leftMargin: units.smallSpacing
-        width:  units.iconSizes.medium
+        anchors.leftMargin: PlasmaCore.Units.smallSpacing
+        width:  PlasmaCore.Units.iconSizes.medium
         height: width
         colorGroup: PlasmaCore.Theme.ComplementaryColorGroup
         animated: false
@@ -82,8 +82,8 @@ Item {
         columns: numColumns
         anchors.left: icon.right
         anchors.right: parent.right
-        anchors.leftMargin: units.largeSpacing
-        anchors.rightMargin: units.largeSpacing
+        anchors.leftMargin: PlasmaCore.Units.largeSpacing
+        anchors.rightMargin: PlasmaCore.Units.largeSpacing
         anchors.verticalCenter: parent.verticalCenter
         columnSpacing: 1
         rowSpacing: 1
@@ -110,7 +110,8 @@ Item {
             wrapMode: Text.Wrap
             color: colorWithAlpha(theme.textColor,0.8)
             text: model.description
-            font.pixelSize: label.font.pixelSize - 2
+            font.pointSize: label.font.pointSize - 2
+            //font.pixelSize: label.font.pixelSize - 2
         }
     }
 

@@ -60,20 +60,17 @@ Item {
         appletInterface: plasmoid
 
         flat: true // have categories, but no subcategories
-        sorted: plasmoid.configuration.alphaSort
         showSeparators: false
-        showTopLevelItems: true
+        showTopLevelItems: false//true
 
         showAllApps: true
-        //showAllAppsCategorized: false
         showAllAppsCategorized: true
-        showRecentApps: false
+        showRecentApps: true
         showRecentDocs: true
         showRecentContacts: false
         showPowerSession: false
-        showFavoritesPlaceholder: true
-
         Component.onCompleted: {
+
             favoritesModel.initForClient("org.kde.plasma.kickoff.favorites.instance-" + plasmoid.id)
 
             if (!plasmoid.configuration.favoritesPortedToKAstats) {
@@ -98,7 +95,8 @@ Item {
         id: runnerModel
         appletInterface: plasmoid
         favoritesModel: rootModel.favoritesModel
-        mergeResults: true
+        mergeResults: false
+        deleteWhenEmpty: true
     }
 
     Kicker.DragHelper {
@@ -115,16 +113,14 @@ Item {
 
     Connections {
         target: plasmoid.configuration
-        onHiddenApplicationsChanged: {
-            rootModel.refresh();
+        function onHiddenApplicationsChanged(){
+            rootModel.refresh(); // Force refresh on hidden
         }
     }
 
     PlasmaCore.FrameSvgItem {
         id : highlightItemSvg
-
         visible: false
-
         imagePath: "widgets/viewitem"
         prefix: "hover"
     }

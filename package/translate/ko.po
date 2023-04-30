@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OnzeMenu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-02 23:21-0300\n"
+"POT-Creation-Date: 2023-04-30 00:33-0300\n"
 "PO-Revision-Date: 2022-06-22 14:28+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -81,12 +81,24 @@ msgid "Center bottom"
 msgstr "가운데 밑"
 
 #: ../contents/ui/ConfigGeneral.qml
+msgid "Main section"
+msgstr ""
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Show recent applications"
+msgstr ""
+
+#: ../contents/ui/ConfigGeneral.qml
 msgid "Expand search to bookmarks, files and emails"
 msgstr "책갈피, 파일, 이메일에서도 찾기"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Show labels in two lines"
 msgstr "두 줄로 레이블 표시"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Hide recent documents"
+msgstr ""
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Number of columns (main grid)"
@@ -101,8 +113,20 @@ msgid "Icons smooth"
 msgstr ""
 
 #: ../contents/ui/ConfigGeneral.qml
+msgid "Pull Up Animation"
+msgstr ""
+
+#: ../contents/ui/ConfigGeneral.qml
 msgid "Size of icons"
 msgstr "아이콘 크기"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Unhide all applications"
+msgstr ""
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Unhidden!"
+msgstr ""
 
 #: ../contents/ui/Footer.qml
 msgid "User Home"
@@ -139,6 +163,10 @@ msgstr "고정됨"
 #: ../contents/ui/MenuRepresentation.qml
 msgid "All apps"
 msgstr "모든 프로그램"
+
+#: ../contents/ui/MenuRepresentation.qml
+msgid "Date and time"
+msgstr ""
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "Recommended"

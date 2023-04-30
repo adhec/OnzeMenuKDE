@@ -44,15 +44,15 @@ PlasmaCore.Dialog {
 
     objectName: "popupWindow"
     flags: Qt.WindowStaysOnTopHint
-    location: PlasmaCore.Types.Floating
+    location: plasmoid.configuration.pullupAnimation ? PlasmaCore.Types.BottomEdge : PlasmaCore.Types.Floating
     hideOnWindowDeactivate: true
 
     property int defaultSize: {
         switch(plasmoid.configuration.defaultSize){
-        case "SmallMedium": return units.iconSizes.smallMedium;
-        case "Medium":      return units.iconSizes.medium;
-        case "Large":       return units.iconSizes.large;
-        case "Huge":        return units.iconSizes.huge;
+        case "SmallMedium": return PlasmaCore.Units.iconSizes.smallMedium;
+        case "Medium":      return PlasmaCore.Units.iconSizes.medium;
+        case "Large":       return PlasmaCore.Units.iconSizes.large;
+        case "Huge":        return PlasmaCore.Units.iconSizes.huge;
         default: return 64
         }
     }
@@ -63,33 +63,30 @@ PlasmaCore.Dialog {
                                  + (2 * Math.max(highlightItemSvg.margins.top + highlightItemSvg.margins.bottom,
                                                  highlightItemSvg.margins.left + highlightItemSvg.margins.right))
 
-    property int tileSideWidth: tileSideHeight + units.smallSpacing*2
+    property int tileSideWidth: tileSideHeight + PlasmaCore.Units.smallSpacing*2
 
-    property int tileHeightDocuments: units.gridUnit * 2 + units.smallSpacing * 4
+    property int tileHeightDocuments: PlasmaCore.Units.gridUnit * 2 + PlasmaCore.Units.smallSpacing * 4
 
     property bool searching: (searchField.text != "")
     property bool readySearch: false
     property bool viewDocuments: false
 
-    property int _margin: iconSizeSquare > 33 ? units.largeSpacing  : units.largeSpacing * 0.5
+    property int _margin: iconSizeSquare > 33 ? PlasmaCore.Units.largeSpacing  : PlasmaCore.Units.largeSpacing * 0.5
 
-    function colorWithAlpha(color, alpha) {
-        return Qt.rgba(color.r, color.g, color.b, alpha)
-    }
-
+    property bool mainViewVisible: !searching && !readySearch
 
     onVisibleChanged: {
+        reset()
         if (visible) {
-            reset();
             var pos = popupPosition(width, height);
             x = pos.x;
             y = pos.y;
             requestActivate();
-            animation1.start()
+            if(!plasmoid.configuration.pullupAnimation)
+                animation1.start()
         }else{
-            //reset()
-            focusScope.opacity = 0
-            focusScope.y = 250
+            //focusScope.opacity = 0
+            //focusScope.y = 250
         }
     }
 
@@ -110,18 +107,27 @@ PlasmaCore.Dialog {
             reset();
         }else{
             viewDocuments = false
-            readySearch = false
+            if(readySearch)
+                readySearch = false
         }
     }
 
-    function reset() {
-        allAppsGrid.model = rootModel.modelForRow(2)
-        documentsFavoritesGrid.model = rootModel.modelForRow(0)
+    function colorWithAlpha(color, alpha) {
+        return Qt.rgba(color.r, color.g, color.b, alpha)
+    }
 
+
+
+    function reset() {
         globalFavoritesGrid.tryActivate(0,0)
         searchField.clear();
         readySearch = false
         viewDocuments = false
+    }
+
+    function setModels(){
+        allAppsGrid.model = rootModel.modelForRow(2)
+        documentsFavoritesGrid.model = rootModel.modelForRow(1)
     }
 
     function toggle(){
@@ -137,7 +143,7 @@ PlasmaCore.Dialog {
                              screenAvail.height);
 
 
-        var offset = units.smallSpacing;
+        var offset = PlasmaCore.Units.smallSpacing;
 
         // Fall back to bottom-left of screen area when the applet is on the desktop or floating.
         var x = offset;
@@ -194,8 +200,7 @@ PlasmaCore.Dialog {
 
         property bool done: false
 
-        OpacityAnimator{id: animation1 ; target: focusScope ; from: 0; to: 1; duration: units.shortDuration*3;}
-        XAnimator{id: animation2; target: mainColumn ; from: focusScope.width; to: units.smallSpacing; duration: units.shortDuration*2; easing.type: Easing.OutCubic }
+        ScaleAnimator{id: animation1 ; target: focusScope ; from: 0.8; to: 1; duration: PlasmaCore.Units.shortDuration*3; easing.type: Easing.OutBack}
 
         focus: true
 
@@ -225,11 +230,11 @@ PlasmaCore.Dialog {
             anchors.horizontalCenter: parent.horizontalCenter
             focus: true
             width: tileSideWidth * plasmoid.configuration.numberColumns
-            implicitHeight: units.gridUnit * 2
+            implicitHeight: PlasmaCore.Units.gridUnit * 2
             placeholderText: i18n("Type here to search ...")
             placeholderTextColor: colorWithAlpha(theme.textColor,0.7)
-            leftPadding: units.largeSpacing + units.iconSizes.small
-            topPadding: units.gridUnit * 0.5
+            leftPadding: PlasmaCore.Units.largeSpacing + PlasmaCore.Units.iconSizes.small
+            topPadding: PlasmaCore.Units.gridUnit * 0.5
             verticalAlignment: Text.AlignTop
             background: Rectangle {
                 color: theme.backgroundColor
@@ -243,18 +248,18 @@ PlasmaCore.Dialog {
                 text = "";
             }
             function backspace() {
-                focus = true;
+                //focus = true;
                 if(searching) text = text.slice(0, -1);
             }
             function appendText(newText) {
                 if (!root.visible) {
                     return;
                 }
-                focus = true;
+                //focus = true;
                 text = text + newText;
             }
             Keys.onPressed: {
-                if (event.key == Qt.Key_Down || event.key == Qt.Key_Tab) {
+                if (event.key === Qt.Key_Down || event.key === Qt.Key_Tab) {
                     event.accepted = true;
                     if( searching || readySearch)
                         mainColumn.visibleGrid.tryActivate(0,0);
@@ -279,10 +284,10 @@ PlasmaCore.Dialog {
             anchors {
                 left: searchField.left
                 verticalCenter: searchField.verticalCenter
-                leftMargin: units.smallSpacing * 2
+                leftMargin: PlasmaCore.Units.smallSpacing * 2
 
             }
-            height: units.iconSizes.small
+            height: PlasmaCore.Units.iconSizes.small
             width: height
         }
 
@@ -301,8 +306,8 @@ PlasmaCore.Dialog {
 
             PlasmaCore.IconItem {
                 source: searching || readySearch ? 'application-menu' : 'favorite'
-                implicitHeight: units.iconSizes.smallMedium
-                implicitWidth: units.iconSizes.smallMedium
+                implicitHeight: PlasmaCore.Units.iconSizes.smallMedium
+                implicitWidth: PlasmaCore.Units.iconSizes.smallMedium
             }
 
             PlasmaExtras.Heading {
@@ -310,7 +315,7 @@ PlasmaCore.Dialog {
                 color: colorWithAlpha(theme.textColor, 0.8)
                 level: 5
                 text: searching || readySearch ? i18n("Search results"): i18n("Pinned")
-                Layout.leftMargin: units.smallSpacing
+                Layout.leftMargin: PlasmaCore.Units.smallSpacing
                 font.weight: Font.Bold
 
             }
@@ -323,17 +328,17 @@ PlasmaCore.Dialog {
             AToolButton {
                 id: btnAction
                 flat: false
-                mirror: searching || readySearch
-                iconName:  searching || readySearch ?  'go-previous' : "go-next"
-                text:  searching || readySearch ?  i18n("Pinned") : i18n("All apps")
+                mirror: !mainViewVisible
+                iconName:  mainViewVisible ?  "go-next" : 'go-previous'
+                text:  mainViewVisible ? i18n("All apps") :  i18n("Pinned")
                 onClicked:  {
-                    if(readySearch || searching){
-                        readySearch = false
-                        searchField.text = ''
-                    }
-                    else{
+                    if(mainViewVisible){
                         readySearch = true
                         //searchField.focus = true
+                    }
+                    else{
+                        readySearch = false
+                        searchField.text = ''
                     }
                 }
             }
@@ -351,7 +356,7 @@ PlasmaCore.Dialog {
                 }
             ]
             transitions: Transition {
-                OpacityAnimator{ duration: units.shortDuration*2 }
+                OpacityAnimator{ duration: PlasmaCore.Units.shortDuration*2 }
             }
         }
 
@@ -364,15 +369,64 @@ PlasmaCore.Dialog {
         Column{
             id: firstPage
 
-
             width:  tileSideWidth * plasmoid.configuration.numberColumns
             height: tileSideHeight * plasmoid.configuration.numberRows  + btnAction.implicitHeight + tileHeightDocuments * 3 + _margin
 
             anchors.top: topRow.bottom
             anchors.topMargin: _margin
-            anchors.horizontalCenter: parent.horizontalCenter
+            //anchors.horizontalCenter: parent.horizontalCenter
             spacing:  _margin
-            visible: !readySearch && !searching
+            //visible: mainViewVisible
+
+
+            state: 'visible'
+            states: [
+                State {
+                    name: "hidden"
+                    when: !mainViewVisible
+                    PropertyChanges { target: firstPage ; opacity: 0}
+                    PropertyChanges { target: firstPage ; x: -firstPage.width}
+                    PropertyChanges { target: firstPage ; visible: 0}
+                },
+                State {
+                    name: "visible"
+                    when: mainViewVisible
+                    PropertyChanges { target: firstPage ; visible: 1}
+                    PropertyChanges { target: firstPage ; opacity: 1}
+                    PropertyChanges { target: firstPage ; x: _margin }
+                }
+            ]
+
+            transitions: [
+
+                Transition {
+                    from: "hidden"
+                    to: "visible"
+                    NumberAnimation {
+                        properties: "opacity,x"
+                        duration: PlasmaCore.Units.shortDuration*2
+                    }
+                },
+                Transition {
+                    from: "visible"
+                    to: "hidden"
+                    SequentialAnimation {
+                        PropertyAction {
+                            target: firstPage;
+                            property: "visible"
+                            value: true
+                        }
+                        PropertyAnimation {
+                            target: firstPage
+                            properties: "opacity,x"
+                            duration: PlasmaCore.Units.shortDuration*2
+                        }
+                    }
+
+                }
+            ]
+
+
 
 
             ItemGridView {
@@ -384,12 +438,10 @@ PlasmaCore.Dialog {
                 cellHeight:  tileSideHeight
                 iconSize:    root.iconSizeSquare
                 square: true
-                //model: globalFavorites
-                model: rootModel.favoritesModel
+                model: plasmoid.configuration.showRecentApps ?  rootModel.modelForRow(0) : rootModel.favoritesModel
                 dropEnabled: true
                 usesPlasmaTheme: true
                 verticalScrollBarPolicy: Qt.ScrollBarAlwaysOff
-                //visible: !viewDocuments
                 state: 'small'
 
                 onKeyNavDown: documentsFavoritesGrid.tryActivate(0,0)
@@ -409,7 +461,7 @@ PlasmaCore.Dialog {
                     }
                 ]
                 transitions: Transition {
-                    PropertyAnimation { property: "height"; duration: units.shortDuration*2;}
+                    PropertyAnimation { property: "height"; duration: PlasmaCore.Units.shortDuration*2;}
                 }
                 Keys.onPressed: {
                     if(event.modifiers & Qt.ControlModifier ||event.modifiers & Qt.ShiftModifier){
@@ -417,23 +469,23 @@ PlasmaCore.Dialog {
                         return
                     }
 
-                    if (event.key == Qt.Key_Tab) {
+                    if (event.key === Qt.Key_Tab) {
                         event.accepted = true;
                         documentsFavoritesGrid.tryActivate(0,0)
-                    } else if (event.key == Qt.Key_Backspace) {
+                    } else if (event.key === Qt.Key_Backspace) {
                         event.accepted = true;
                         if(searching)
                             searchField.backspace();
                         else
                             searchField.focus = true
-                    } else if (event.key == Qt.Key_Escape) {
+                    } else if (event.key === Qt.Key_Escape) {
                         event.accepted = true;
                         if(searching){
                             searchField.clear()
                         } else {
                             root.toggle()
                         }
-                    } else if (event.text != "") {
+                    } else if (event.text !== "") {
                         event.accepted = true;
                         searchField.appendText(event.text);
                     }
@@ -446,23 +498,24 @@ PlasmaCore.Dialog {
                 height: btnAction.implicitHeight
 
                 PlasmaCore.IconItem {
-                    source: 'tag' // 'format-list-unordered'
-                    implicitHeight: units.iconSizes.smallMedium
-                    implicitWidth: units.iconSizes.smallMedium
+                    source: plasmoid.configuration.hideRecentDocs ? 'clock' : 'tag'
+                    implicitHeight: PlasmaCore.Units.iconSizes.smallMedium
+                    implicitWidth: PlasmaCore.Units.iconSizes.smallMedium
                 }
 
                 PlasmaExtras.Heading {
                     id: headLabelDocuments
                     color: colorWithAlpha(theme.textColor, 0.8)
                     level: 5
-                    text: i18n("Recommended")
-                    Layout.leftMargin: units.smallSpacing
+                    text: plasmoid.configuration.hideRecentDocs ?  i18n("Date and time") :  i18n("Recommended")
+                    Layout.leftMargin: PlasmaCore.Units.smallSpacing
                     font.weight: Font.Bold
                 }
                 Item{
                     Layout.fillWidth: true
                 }
                 AToolButton {
+                    visible: !plasmoid.configuration.hideRecentDocs
                     flat: false
                     iconName:  viewDocuments ?  'go-previous' : "go-next"
                     mirror: viewDocuments
@@ -471,14 +524,19 @@ PlasmaCore.Dialog {
                 }
             }
 
+            Clock{
+                width: parent.width
+                height:  tileHeightDocuments * 3
+                visible: plasmoid.configuration.hideRecentDocs
+            }
             ItemGridView3 {
                 id: documentsFavoritesGrid
+                visible: !plasmoid.configuration.hideRecentDocs
                 width: parent.width
                 height:  tileHeightDocuments * 3
                 cellWidth:   Math.floor(parent.width * 0.5)
                 cellHeight:  tileHeightDocuments
                 square: false
-                //model: rootModel.modelForRow(0)// recentUsageModel
                 dropEnabled: true
                 usesPlasmaTheme: false
                 verticalScrollBarPolicy: Qt.ScrollBarAlwaysOff
@@ -501,35 +559,34 @@ PlasmaCore.Dialog {
                     }
                 ]
                 transitions: Transition {
-                    PropertyAnimation { property: "height"; duration: units.shortDuration*2 }
+                    PropertyAnimation { property: "height"; duration: PlasmaCore.Units.shortDuration*2 }
                 }
 
                 Keys.onPressed: {
-
                     if(event.modifiers & Qt.ControlModifier ||event.modifiers & Qt.ShiftModifier){
                         searchField.focus = true;
                         return
                     }
 
-                    if (event.key == Qt.Key_Tab) {
+                    if (event.key === Qt.Key_Tab) {
                         event.accepted = true;
                         if (viewDocuments) searchField.focus = true
                         else  globalFavoritesGrid.tryActivate(0,0);
 
-                    }  else if (event.key == Qt.Key_Backspace) {
+                    }  else if (event.key === Qt.Key_Backspace) {
                         event.accepted = true;
                         if(searching)
                             searchField.backspace();
                         else
                             searchField.focus = true
-                    } else if (event.key == Qt.Key_Escape) {
+                    } else if (event.key === Qt.Key_Escape) {
                         event.accepted = true;
                         if(searching){
                             searchField.clear()
                         } else {
                             root.toggle()
                         }
-                    } else if (event.text != "") {
+                    } else if (event.text !== "") {
                         event.accepted = true;
                         searchField.appendText(event.text);
                     }
@@ -542,15 +599,65 @@ PlasmaCore.Dialog {
 
         }
 
-        Item{
-            anchors.top: topRow.bottom
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.fill: firstPage
-            visible: searching || readySearch
+        //
+        //
+        //
+        //
 
-            onVisibleChanged: {
-                if(visible) animation2.start()
-            }
+        Item{
+            id: mainLists
+            anchors.top: topRow.bottom
+            anchors.topMargin: _margin
+            width:  tileSideWidth * plasmoid.configuration.numberColumns
+            height: tileSideHeight * plasmoid.configuration.numberRows  + btnAction.implicitHeight + tileHeightDocuments * 3 + _margin
+
+            state: 'hidden'
+            states: [
+                State {
+                    name: "hidden"
+                    when: mainViewVisible
+                    PropertyChanges { target: mainLists ; opacity: 0}
+                    PropertyChanges { target: mainLists ; x: mainLists.width}
+                    PropertyChanges { target: mainLists ; visible: 0}
+                },
+                State {
+                    name: "visible"
+                    when: !mainViewVisible
+                    PropertyChanges { target: mainLists ; visible: 1}
+                    PropertyChanges { target: mainLists ; opacity: 1}
+                    PropertyChanges { target: mainLists ; x: _margin }
+                }
+            ]
+
+            transitions: [
+
+                Transition {
+                    from: "hidden"
+                    to: "visible"
+                    NumberAnimation {
+                        properties: "opacity,x"
+                        duration: PlasmaCore.Units.shortDuration*2
+
+                    }
+                },
+                Transition {
+                    from: "visible"
+                    to: "hidden"
+                    SequentialAnimation {
+                        PropertyAction {
+                            target: mainLists;
+                            property: "visible"
+                            value: true
+                        }
+                        PropertyAnimation {
+                            target: mainLists
+                            properties: "opacity,x"
+                        }
+                    }
+
+                }
+            ]
+
 
             Item {
                 id: mainColumn
@@ -558,7 +665,7 @@ PlasmaCore.Dialog {
                 height: parent.height
                 anchors {
                     top: parent.top
-                    topMargin: units.smallSpacing
+                    topMargin: PlasmaCore.Units.smallSpacing
                 }
                 property Item visibleGrid: allAppsGrid
 
@@ -576,9 +683,8 @@ PlasmaCore.Dialog {
                     height: parent.height
                     enabled: (opacity == 1.0) ? 1 : 0
                     opacity: searching ? 0 : 1
-                    aCellWidth: parent.width - units.largeSpacing
-                    aCellHeight: iconSize + units.smallSpacing*2
-                    //model: rootModel.modelForRow(1)//// rootModel.modelForRow(2);
+                    aCellWidth: parent.width - PlasmaCore.Units.largeSpacing
+                    aCellHeight: iconSize + PlasmaCore.Units.smallSpacing*2
                     onOpacityChanged: {
                         if (opacity == 1.0) {
                             allAppsGrid.flickableItem.contentY = 0;
@@ -593,8 +699,8 @@ PlasmaCore.Dialog {
                     id: runnerGrid
                     anchors.fill: parent
                     z: (opacity == 1.0) ? 1 : 0
-                    aCellWidth: parent.width - units.largeSpacing
-                    aCellHeight: iconSize + units.smallSpacing * 2
+                    aCellWidth: parent.width - PlasmaCore.Units.largeSpacing
+                    aCellHeight: iconSize + PlasmaCore.Units.smallSpacing * 2
 
                     enabled: (opacity == 1.0) ? 1 : 0
                     isSquare: false
@@ -617,23 +723,23 @@ PlasmaCore.Dialog {
                         return
                     }
 
-                    if (event.key == Qt.Key_Tab) {
+                    if (event.key === Qt.Key_Tab) {
                         event.accepted = true;
                         globalFavoritesGrid.tryActivate(0,0)
-                    } else if (event.key == Qt.Key_Backspace) {
+                    } else if (event.key === Qt.Key_Backspace) {
                         event.accepted = true;
                         if(searching)
                             searchField.backspace();
                         else
                             searchField.focus = true
-                    } else if (event.key == Qt.Key_Escape) {
+                    } else if (event.key === Qt.Key_Escape) {
                         event.accepted = true;
                         if(searching){
                             searchField.clear()
                         } else {
                             root.toggle()
                         }
-                    } else if (event.text != "") {
+                    } else if (event.text !== "") {
                         event.accepted = true;
                         searchField.appendText(event.text);
                     }
@@ -643,19 +749,23 @@ PlasmaCore.Dialog {
 
         }
 
+        //
+        //
+        //
+        //
 
         Rectangle{
             id: footer
             width: parent.width + backgroundSvg.margins.right + backgroundSvg.margins.left
-            height: root.iconSizeSquare + units.smallSpacing*4 // units.gridUnit * 3
+            height: root.iconSizeSquare + PlasmaCore.Units.smallSpacing*4 // PlasmaCore.Units.gridUnit * 3
             x: - backgroundSvg.margins.left
             y: parent.height - height + backgroundSvg.margins.bottom
             color: colorWithAlpha(theme.textColor,0.05)
 
             Footer{
                 anchors.fill: parent
-                anchors.leftMargin: _margin*2
-                anchors.rightMargin: _margin*2
+                anchors.leftMargin: _margin
+                anchors.rightMargin: _margin
             }
 
             Rectangle{
@@ -678,9 +788,9 @@ PlasmaCore.Dialog {
     }
 
     Component.onCompleted: {
-        //rootModel.refreshed.connect(reset) // TODO
-        //kicker.reset.connect(reset);
+        rootModel.refreshed.connect(setModels)
         reset();
         rootModel.refresh();
     }
 }
+

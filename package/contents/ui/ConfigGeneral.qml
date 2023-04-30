@@ -33,6 +33,7 @@ import org.kde.plasma.private.kicker 0.1 as Kicker
 import "code/tools.js" as Logic
 import org.kde.kirigami 2.4 as Kirigami
 
+
 Kirigami.FormLayout {
 
     id: configGeneral
@@ -48,12 +49,16 @@ Kirigami.FormLayout {
     //property alias cfg_switchCategoriesOnHover: switchCategoriesOnHover.checked
 
     property alias cfg_useExtraRunners: useExtraRunners.checked
+    property alias cfg_hideRecentDocs: hideRecentDocs.checked
+    property alias cfg_showRecentApps: showRecentApps.checked
 
     property alias cfg_numberColumns: numberColumns.value
     property alias cfg_numberRows: numberRows.value
     property alias cfg_labels2lines: labels2lines.checked
     property alias cfg_displayPosition: displayPosition.currentIndex
     property alias cfg_iconSmooth: iconSmooth.checked
+
+    property alias cfg_pullupAnimation: pullupAnimation.checked
 
 
     property string cfg_defaultSize
@@ -64,13 +69,13 @@ Kirigami.FormLayout {
     Button {
         Kirigami.FormData.label: i18n("Icon:")
         id: iconButton
-        //Layout.minimumWidth: previewFrame.width + units.smallSpacing * 2
+        //Layout.minimumWidth: previewFrame.width + PlasmaCore.Units.smallSpacing * 2
         //Layout.maximumWidth: Layout.minimumWidth
-        //Layout.minimumHeight: previewFrame.height + units.smallSpacing * 2
+        //Layout.minimumHeight: previewFrame.height + PlasmaCore.Units.smallSpacing * 2
         //Layout.maximumHeight: Layout.minimumWidth
 
-        implicitWidth: previewFrame.width + units.smallSpacing * 2
-        implicitHeight: previewFrame.height + units.smallSpacing * 2
+        implicitWidth: previewFrame.width + PlasmaCore.Units.smallSpacing * 2
+        implicitHeight: previewFrame.height + PlasmaCore.Units.smallSpacing * 2
 
         DragDrop.DropArea {
             id: dropArea
@@ -131,12 +136,12 @@ Kirigami.FormLayout {
             anchors.centerIn: parent
             imagePath: plasmoid.location === PlasmaCore.Types.Vertical || plasmoid.location === PlasmaCore.Types.Horizontal
                        ? "widgets/panel-background" : "widgets/background"
-            width: units.iconSizes.large + fixedMargins.left + fixedMargins.right
-            height: units.iconSizes.large + fixedMargins.top + fixedMargins.bottom
+            width: PlasmaCore.Units.iconSizes.large + fixedMargins.left + fixedMargins.right
+            height: PlasmaCore.Units.iconSizes.large + fixedMargins.top + fixedMargins.bottom
 
             PlasmaCore.IconItem {
                 anchors.centerIn: parent
-                width: units.iconSizes.large
+                width: PlasmaCore.Units.iconSizes.large
                 height: width
                 source: cfg_useCustomButtonImage ? cfg_customButtonImage : cfg_icon
             }
@@ -175,7 +180,11 @@ Kirigami.FormLayout {
         onActivated: cfg_displayPosition = currentIndex
     }
 
-
+    CheckBox {
+        id: showRecentApps
+        Kirigami.FormData.label: i18n("Main section")
+        text: i18n("Show recent applications")
+    }
     // title: i18n("Search")
     //
     //
@@ -185,9 +194,15 @@ Kirigami.FormLayout {
         id: useExtraRunners
         text: i18n("Expand search to bookmarks, files and emails")
     }
+
     CheckBox {
         id: labels2lines
         text: i18n("Show labels in two lines")
+    }
+
+    CheckBox {
+        id: hideRecentDocs
+        text: i18n("Hide recent documents")
     }
 
     SpinBox{
@@ -208,7 +223,14 @@ Kirigami.FormLayout {
     CheckBox {
         id: iconSmooth
         Kirigami.FormData.label: i18n("Icons smooth")
+        visible: false // TODO validate
     }
+
+    CheckBox {
+        id: pullupAnimation
+        Kirigami.FormData.label: i18n("Pull Up Animation")
+    }
+
 
     ComboBox {
         id: defaultFormatCombo
@@ -216,6 +238,19 @@ Kirigami.FormLayout {
         model: Logic.formats
         currentIndex: defaultFormatCombo.model.indexOf(cfg_defaultSize)
         onActivated: cfg_defaultSize = model[index]
+    }
+
+    RowLayout{
+        Button {
+            text: i18n("Unhide all applications")
+            onClicked: {
+                plasmoid.configuration.hiddenApplications = [];
+                unhideAllAppsPopup.text = i18n("Unhidden!");
+            }
+        }
+        Label {
+            id: unhideAllAppsPopup
+        }
     }
 }
 
