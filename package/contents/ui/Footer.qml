@@ -44,10 +44,10 @@ RowLayout{
         source: kuser.faceIconUrl.toString() || "user-identity"
         cache: false
         visible: source !== ""
-        Layout.leftMargin: 10
-        sourceSize.height: parent.height * 0.7
-        sourceSize.width:  parent.height * 0.7
+        sourceSize.height: parent.height * 0.9
+        sourceSize.width:  parent.height * 0.9
         fillMode: Image.PreserveAspectFit
+        Layout.alignment: Qt.AlignVCenter
 
         // Crop the avatar to fit in a circle, like the lock and login screens
         // but don't on software rendering where this won't render
@@ -72,8 +72,6 @@ RowLayout{
         //font.weight: Font.Bold
         text: qsTr(kuser.fullName)
     }
-
-
 
     Item{
         Layout.fillWidth: true
@@ -110,8 +108,7 @@ RowLayout{
     PlasmaComponents3.ToolButton {
         icon.name:  "system-shutdown"
         onClicked: pmEngine.performOperation("requestShutDown")
-        Layout.rightMargin: 10
-
+        //Layout.rightMargin: 10
         ToolTip.delay: 1000
         ToolTip.timeout: 1000
         ToolTip.visible: hovered

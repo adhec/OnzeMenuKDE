@@ -35,6 +35,9 @@
     <entry name="numberRows" type="Int">
       <default>3</default>
     </entry>
+    <entry name="textLabelFontsize" type="Int">
+      <default>12</default>
+    </entry>
     <entry name="defaultSize" type="String">
       <default>Medium</default>
     </entry>
@@ -90,6 +93,10 @@
     </entry>
     <entry name="viewUser" type="Bool">
       <default>true</default>
+    </entry>
+    <entry name="menuLabel" type="string">
+        <label>Text label for the Panel button</label>
+        <default></default>
     </entry>
   </group>
 </kcfg>

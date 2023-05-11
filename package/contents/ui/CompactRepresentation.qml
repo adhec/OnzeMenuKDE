@@ -22,6 +22,7 @@ import QtQuick.Layouts 1.1
 
 import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.core 2.0 as PlasmaCore
+import org.kde.plasma.components 3.0 as PC3
 
 Item {
     id: root
@@ -38,8 +39,15 @@ Item {
 
     Plasmoid.status: dashWindow && dashWindow.visible ? PlasmaCore.Types.RequiresAttentionStatus : PlasmaCore.Types.PassiveStatus
 
-    onWidthChanged: updateSizeHints()
-    onHeightChanged: updateSizeHints()
+    // Taken from DigitalClock to ensure uniform sizing when next to each other
+    readonly property bool tooSmall: plasmoid.formFactor === PlasmaCore.Types.Horizontal && Math.round(2 * (root.height / 5)) <= PlasmaCore.Theme.smallestFont.pixelSize
+
+    readonly property bool shouldHaveIcon: Plasmoid.formFactor === PlasmaCore.Types.Vertical || Plasmoid.icon !== ""
+    readonly property bool shouldHaveLabel: Plasmoid.formFactor !== PlasmaCore.Types.Vertical && Plasmoid.configuration.menuLabel !== ""
+
+
+   // onWidthChanged: updateSizeHints()
+   // onHeightChanged: updateSizeHints()
 
     function updateSizeHints() {
         if (useCustomButtonImage) {
@@ -64,14 +72,61 @@ Item {
         }
     }
 
-    Connections {
-        target: PlasmaCore.Units.iconSizeHints
+    readonly property var sizing: {
+        const displayedIcon = buttonIcon.valid ? buttonIcon : buttonIconFallback;
 
-        function onPanelChanged(){ updateSizeHints()}
+        let impWidth = 0;
+        if (shouldHaveIcon) {
+            impWidth += displayedIcon.width;
+        }
+        if (shouldHaveLabel) {
+            impWidth += labelTextField.contentWidth + labelTextField.Layout.leftMargin + labelTextField.Layout.rightMargin;
+        }
+        const impHeight = Math.max(PlasmaCore.Units.iconSizeHints.panel, displayedIcon.height);
+
+        // at least square, but can be wider/taller
+        if (root.inPanel) {
+            if (root.vertical) {
+                return {
+                    minimumWidth: -1,
+                    maximumWidth: PlasmaCore.Units.iconSizeHints.panel,
+                    minimumHeight: -1,
+                    maximumHeight: impHeight,
+                };
+            } else { // horizontal
+                return {
+                    minimumWidth: impWidth,
+                    maximumWidth: impWidth,
+                    minimumHeight: -1,
+                    maximumHeight: PlasmaCore.Units.iconSizeHints.panel,
+                };
+            }
+        } else {
+            return {
+                minimumWidth: impWidth,
+                maximumWidth: -1,
+                minimumHeight: PlasmaCore.Units.iconSizes.small,
+                maximumHeight: -1,
+            };
+        }
     }
 
+    implicitWidth: PlasmaCore.Units.iconSizeHints.panel
+    implicitHeight: PlasmaCore.Units.iconSizeHints.panel
+
+    Layout.minimumWidth: sizing.minimumWidth
+    Layout.maximumWidth: sizing.maximumWidth
+    Layout.minimumHeight: sizing.minimumHeight
+    Layout.maximumHeight: sizing.maximumHeight
+
+
+    //Connections {
+    //    target: PlasmaCore.Units.iconSizeHints
+    //    function onPanelChanged(){ updateSizeHints()}
+    //}
+
     PlasmaCore.IconItem {
-        id: buttonIcon
+        id: buttonIcon3
 
         anchors.fill: parent
 
@@ -83,22 +138,73 @@ Item {
         active: mouseArea.containsMouse
 
         smooth: true
+        visible: false
 
         // A custom icon could also be rectangular. However, if a square, custom, icon is given, assume it
         // to be an icon and round it to the nearest icon size again to avoid scaling artefacts.
         roundToIconSize: !useCustomButtonImage || aspectRatio === 1
 
-        onSourceChanged: updateSizeHints()
+       // onSourceChanged: updateSizeHints()
+    }
+
+    RowLayout {
+        id: iconLabelRow
+        anchors.fill: parent
+        spacing: 0
+
+        PlasmaCore.IconItem {
+            id: buttonIcon
+
+            Layout.fillWidth: root.vertical
+            Layout.fillHeight: !root.vertical
+            Layout.preferredWidth: root.vertical ? -1 : height / (implicitHeight / implicitWidth)
+            Layout.preferredHeight: !root.vertical ? -1 : width * (implicitHeight / implicitWidth)
+            Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
+            source: useCustomButtonImage ? plasmoid.configuration.customButtonImage : plasmoid.configuration.icon
+            //source: Tools.iconOrDefault(plasmoid.formFactor, plasmoid.icon)
+            //active: compactRoot.containsMouse || compactDragArea.containsDrag
+            roundToIconSize: implicitHeight === implicitWidth
+            visible: valid
+        }
+
+        PlasmaCore.IconItem {
+            id: buttonIconFallback
+            // fallback is assumed to be square
+            Layout.fillWidth: root.vertical
+            Layout.fillHeight: !root.vertical
+            Layout.preferredWidth: root.vertical ? -1 : height
+            Layout.preferredHeight: !root.vertical ? -1 : width
+            Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
+
+            source: buttonIcon.valid ? null : Tools.defaultIconName
+            //active: compactRoot.containsMouse || compactDragArea.containsDrag
+            visible: !buttonIcon.valid && Plasmoid.icon !== ""
+        }
+
+        PC3.Label {
+            id: labelTextField
+
+            Layout.fillHeight: true
+            Layout.leftMargin: PlasmaCore.Units.smallSpacing
+            Layout.rightMargin: PlasmaCore.Units.smallSpacing
+
+            text: plasmoid.configuration.menuLabel
+            horizontalAlignment: Text.AlignLeft
+            verticalAlignment: Text.AlignVCenter
+            wrapMode: Text.NoWrap
+            //fontSizeMode: Text.VerticalFit
+            font.pixelSize: plasmoid.configuration.textLabelFontsize
+            //font.pixelSize: compactRoot.tooSmall ? PlasmaCore.Theme.defaultFont.pixelSize : PlasmaCore.Units.roundToIconSize(PlasmaCore.Units.gridUnit * 2)
+            minimumPointSize: PlasmaCore.Theme.smallestFont.pointSize
+            visible: root.shouldHaveLabel
+        }
     }
 
     MouseArea
     {
         id: mouseArea
-
         anchors.fill: parent
-
         hoverEnabled: true
-
         onClicked: {
             dashWindow.visible = !dashWindow.visible;
         }

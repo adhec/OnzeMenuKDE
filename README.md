@@ -1,25 +1,58 @@
-# OnzeMenu
-
-### Onze == Eleven
+# Onze Menu (11)
 
 Menu launcher for plasma KDE
 
-Download from: [https://www.pling.com/p/1545530/](https://www.pling.com/p/1545530/)
+**'onze' is eleven in pt**
 
-### Previews: 
+### Features
 
-![Image of ditto](https://github.com/adhec/OnzeMenuKDE/blob/main/preview.jpg)
+- Custom menu position
+- Hide applications
+- Favorite applications
+- Recent documents 
+
+## Installation
+
+Before using the menu, install the addons in your linux distribution.
+
+```bash
+# Ubuntu Jammy
+sudo apt install plasma-widgets-addons
+
+# Arch / Manjaro
+sudo pacman -S kdeplasma-addons
+```
+
+Install the menu from: [https://store.kde.org/p/1545530](https://store.kde.org/p/1545530) or download from New Plasma Widgets.
+
+## Screenshots
+
+![menu](https://raw.githubusercontent.com/adhec/OnzeMenuKDE/main/preview.jpg)
 
 
-## Coffee
+## License
 
-<p align="center">Share your ❤️ Buy me a ☕</p>
+This project is [GPL-2.0+](https://choosealicense.com/licenses/gpl-2.0/) license
 
-<p align="center"><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=V9Q8MK9CKSQW8&source=url" target="_blank"><img src="https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/C2/logos-buttons/optimize/44_Grey_PayPal_Pill_Button.png" alt="Paypal button" style="height: 44px !important;width: 145px !important;" ></a><a href="https://www.buymeacoffee.com/adhe" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-1.svg" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;" ></a><a href="https://liberapay.com/_adhe_/donate" target="_blank"><img src="https://liberapay.com/assets/widgets/donate.svg" alt="Buy Me A Coffee" style="height: 41px !important;width: 140px !important;" ></a></p>
 
-Have fun ;)
+## Contributing
+
+Contributions are always welcome!
+
+## Support
+
+You can also help the project.
+
+<p>
+    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=V9Q8MK9CKSQW8&source=url" target="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=V9Q8MK9CKSQW8&source=url">
+        <img src="https://img.shields.io/badge/PayPal-adhec-blue.svg?logo=paypal&logoColor=00457C&style=flat-square" alt="PayPal"/>
+    </a>
+    <a href="https://liberapay.com/_adhe_/donate" target="https://liberapay.com/_adhe_/donate">
+        <img src="https://img.shields.io/badge/Liberapay-adhec-yellow.svg?logo=liberapay&logoColor=f6c915&style=flat-square" alt="Liberapay"/>
+    </a>
+</p>
+
 
 ## Translations
 
-See the [package/translate](package/translate) folder for instructions on translating.
-
+See the [package/translate](package/translate) folder for translation instructions.

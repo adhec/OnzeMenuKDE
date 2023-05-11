@@ -17,36 +17,31 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA .        *
  ***************************************************************************/
 
-import QtQuick 2.0
-import QtQuick.Controls 1.0
+import QtQuick 2.15
 import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.0
+import QtQuick.Controls 2.5
 
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 2.0 as PlasmaComponents
 
 import org.kde.kquickcontrolsaddons 2.0 as KQuickAddons
 import org.kde.draganddrop 2.0 as DragDrop
-
 import org.kde.plasma.private.kicker 0.1 as Kicker
 
-import "code/tools.js" as Logic
-import org.kde.kirigami 2.4 as Kirigami
+
+import "code/tools.js" as Tools
+import org.kde.plasma.extras 2.0 as PlasmaExtras
+import org.kde.kirigami 2.10 as Kirigami
 
 
 Kirigami.FormLayout {
 
     id: configGeneral
 
-    //width: childrenRect.width
-    //height: childrenRect.height
-
     property string cfg_icon: plasmoid.configuration.icon
     property bool cfg_useCustomButtonImage: plasmoid.configuration.useCustomButtonImage
     property string cfg_customButtonImage: plasmoid.configuration.customButtonImage
-
-    //property alias cfg_appNameFormat: appNameFormat.currentIndex
-    //property alias cfg_switchCategoriesOnHover: switchCategoriesOnHover.checked
 
     property alias cfg_useExtraRunners: useExtraRunners.checked
     property alias cfg_hideRecentDocs: hideRecentDocs.checked
@@ -54,14 +49,15 @@ Kirigami.FormLayout {
 
     property alias cfg_numberColumns: numberColumns.value
     property alias cfg_numberRows: numberRows.value
+
     property alias cfg_labels2lines: labels2lines.checked
     property alias cfg_displayPosition: displayPosition.currentIndex
     property alias cfg_iconSmooth: iconSmooth.checked
 
     property alias cfg_pullupAnimation: pullupAnimation.checked
-
-
     property string cfg_defaultSize
+    property string cfg_menuLabel: menuLabel.text
+    property alias cfg_textLabelFontsize: textLabelFontsize.value
 
 
     // ----------------- Icon -----------------
@@ -168,6 +164,41 @@ Kirigami.FormLayout {
     }
 
 
+    Kirigami.ActionTextField {
+        id: menuLabel
+        enabled: plasmoid.formFactor !== PlasmaCore.Types.Vertical
+        Kirigami.FormData.label: i18nc("@label:textbox", "Text label")
+        text: plasmoid.configuration.menuLabel
+        placeholderText: i18nc("@info:placeholder", "Type here to add a text label")
+        onTextEdited: {
+            cfg_menuLabel = menuLabel.text
+
+            // This is to make sure that we always have a icon if there is no text.
+            // If the user remove the icon and remove the text, without this, we'll have no icon and no text.
+            // This is to force the icon to be there.
+            if (!menuLabel.text) {
+                cfg_icon = cfg_icon || Tools.defaultIconName
+            }
+        }
+        rightActions: [
+            Action {
+                icon.name: "edit-clear"
+                enabled: menuLabel.text !== ""
+                text: i18nc("@action:button", "Reset menu label")
+                onTriggered: {
+                    menuLabel.clear()
+                    cfg_menuLabel = ''
+                    cfg_icon = cfg_icon || Tools.defaultIconName
+                }
+            }
+        ]
+    }
+    SpinBox{
+        id: textLabelFontsize
+        from: 10
+        to: 50
+        Kirigami.FormData.label: i18n("Text label fontsize")
+    }
 
     ComboBox {
         id: displayPosition
@@ -185,14 +216,11 @@ Kirigami.FormLayout {
         Kirigami.FormData.label: i18n("Main section")
         text: i18n("Show recent applications")
     }
-    // title: i18n("Search")
-    //
-    //
-
 
     CheckBox {
         id: useExtraRunners
         text: i18n("Expand search to bookmarks, files and emails")
+        visible: false
     }
 
     CheckBox {
@@ -207,15 +235,15 @@ Kirigami.FormLayout {
 
     SpinBox{
         id: numberColumns
-        minimumValue: 4
-        maximumValue: 10
+        from: 4
+        to: 10
         Kirigami.FormData.label: i18n("Number of columns (main grid)")
     }
 
     SpinBox{
         id: numberRows
-        minimumValue: 1
-        maximumValue: 10
+        from: 1
+        to: 10
         Kirigami.FormData.label: i18n("Number of rows (main grid)")
 
     }
@@ -235,7 +263,7 @@ Kirigami.FormLayout {
     ComboBox {
         id: defaultFormatCombo
         Kirigami.FormData.label: i18n("Size of icons")
-        model: Logic.formats
+        model: Tools.formats
         currentIndex: defaultFormatCombo.model.indexOf(cfg_defaultSize)
         onActivated: cfg_defaultSize = model[index]
     }

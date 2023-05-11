@@ -753,30 +753,17 @@ PlasmaCore.Dialog {
         //
         //
         //
-
-        Rectangle{
+        PlasmaExtras.PlasmoidHeading {
             id: footer
-            width: parent.width + backgroundSvg.margins.right + backgroundSvg.margins.left
-            height: root.iconSizeSquare + PlasmaCore.Units.smallSpacing*4 // PlasmaCore.Units.gridUnit * 3
-            x: - backgroundSvg.margins.left
-            y: parent.height - height + backgroundSvg.margins.bottom
-            color: colorWithAlpha(theme.textColor,0.05)
-
+            contentWidth: parent.width
+            contentHeight: root.iconSizeSquare + PlasmaCore.Units.smallSpacing
+            anchors.bottom: parent.bottom
+            position: PlasmaComponents3.ToolBar.Footer
             Footer{
                 anchors.fill: parent
                 anchors.leftMargin: _margin
                 anchors.rightMargin: _margin
             }
-
-            Rectangle{
-                anchors.top: parent.top
-                width: parent.width
-                height: 1
-                color: theme.textColor
-                opacity: 0.15
-                z:2
-            }
-
         }
 
         Keys.onPressed: {
