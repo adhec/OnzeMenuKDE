@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OnzeMenu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-30 00:33-0300\n"
-"PO-Revision-Date: 2023-04-07 HO:MI+ZONE\n"
+"POT-Creation-Date: 2023-05-19 16:18+0300\n"
+"PO-Revision-Date: 2023-06-01 11:24+0300\n"
 "Last-Translator: Mykhailo Stetsiuk <yaBobJonez@gmail.com>\n"
 "Language-Team: \n"
 "Language: uk\n"
@@ -64,6 +64,25 @@ msgid "Clear Icon"
 msgstr "Прибрати піктограму"
 
 #: ../contents/ui/ConfigGeneral.qml
+msgctxt "@label:textbox"
+msgid "Text label"
+msgstr "Текстова мітка"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgctxt "@info:placeholder"
+msgid "Type here to add a text label"
+msgstr "Введіть текст мітки тут"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgctxt "@action:button"
+msgid "Reset menu label"
+msgstr "Мітка меню за замовчуванням"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Text label fontsize"
+msgstr "Розмір шрифту мітки"
+
+#: ../contents/ui/ConfigGeneral.qml
 msgid "Menu position"
 msgstr "Розташування меню"
 
@@ -81,11 +100,11 @@ msgstr "Центр знизу"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Main section"
-msgstr ""
+msgstr "Основний розділ"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Show recent applications"
-msgstr ""
+msgstr "Відображати нещодавно використані програми"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Expand search to bookmarks, files and emails"
@@ -97,7 +116,7 @@ msgstr "Відображати пункти у два рядки"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Hide recent documents"
-msgstr ""
+msgstr "Приховувати нещодавні документи"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Number of columns (main grid)"
@@ -113,7 +132,7 @@ msgstr "Згладжування піктограм"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Pull Up Animation"
-msgstr ""
+msgstr "Анімація вискакування"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Size of icons"
@@ -121,11 +140,11 @@ msgstr "Розмір піктограм"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Unhide all applications"
-msgstr ""
+msgstr "Відобразити всі приховані програми"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Unhidden!"
-msgstr ""
+msgstr "Відображено!"
 
 #: ../contents/ui/Footer.qml
 msgid "User Home"
@@ -165,7 +184,7 @@ msgstr "Усі програми"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "Date and time"
-msgstr ""
+msgstr "Дата і час"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "Recommended"
