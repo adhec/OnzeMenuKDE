@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OnzeMenu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-30 00:33-0300\n"
+"POT-Creation-Date: 2023-05-19 16:18+0300\n"
 "PO-Revision-Date: 2022-11-06 15:+0200\n"
 "Last-Translator: Pascal Dietrich <pascal.1.dietrich@hotmail.com>\n"
 "Language-Team: \n"
@@ -61,6 +61,25 @@ msgstr "Auswählen..."
 msgctxt "@item:inmenu Reset icon to default"
 msgid "Clear Icon"
 msgstr "Symbol entfernen"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgctxt "@label:textbox"
+msgid "Text label"
+msgstr ""
+
+#: ../contents/ui/ConfigGeneral.qml
+msgctxt "@info:placeholder"
+msgid "Type here to add a text label"
+msgstr ""
+
+#: ../contents/ui/ConfigGeneral.qml
+msgctxt "@action:button"
+msgid "Reset menu label"
+msgstr ""
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Text label fontsize"
+msgstr ""
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Menu position"

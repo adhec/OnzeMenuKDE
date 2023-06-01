@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OnzeMenu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-30 00:33-0300\n"
+"POT-Creation-Date: 2023-05-19 16:18+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../metadata.desktop
 msgid "OnzeMenu 11"
-msgstr ""
+msgstr "OnzeMenu 11"
 
 #: ../metadata.desktop
 msgid "A configurable launcher menu 11"
@@ -64,6 +64,25 @@ msgid "Clear Icon"
 msgstr "Удалить значок"
 
 #: ../contents/ui/ConfigGeneral.qml
+msgctxt "@label:textbox"
+msgid "Text label"
+msgstr "Текстовая метка"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgctxt "@info:placeholder"
+msgid "Type here to add a text label"
+msgstr "Введите текст метки здесь"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgctxt "@action:button"
+msgid "Reset menu label"
+msgstr "Обнулить метку меню"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Text label fontsize"
+msgstr "Размер шрифта метки"
+
+#: ../contents/ui/ConfigGeneral.qml
 msgid "Menu position"
 msgstr "Позиция меню"
 
@@ -81,11 +100,11 @@ msgstr "Центр снизу"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Main section"
-msgstr ""
+msgstr "Основной раздел"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Show recent applications"
-msgstr ""
+msgstr "Показывать недавно открытые приложения"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Expand search to bookmarks, files and emails"
@@ -97,7 +116,7 @@ msgstr "Показывать метки в две строки"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Hide recent documents"
-msgstr ""
+msgstr "Скрывать последние документы"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Number of columns (main grid)"
@@ -113,7 +132,7 @@ msgstr "Сглаживание значков"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Pull Up Animation"
-msgstr ""
+msgstr "Анимация выскакивания"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Size of icons"
@@ -121,11 +140,11 @@ msgstr "Размер значков"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Unhide all applications"
-msgstr ""
+msgstr "Показать все скрытые приложения"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Unhidden!"
-msgstr ""
+msgstr "Показано!"
 
 #: ../contents/ui/Footer.qml
 msgid "User Home"
@@ -149,7 +168,7 @@ msgstr "Изменить Приложения…"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "Type here to search ..."
-msgstr "Введите для поиска"
+msgstr "Введите запрос для поиска"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "Search results"
@@ -165,7 +184,7 @@ msgstr "Все приложения"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "Date and time"
-msgstr ""
+msgstr "Дата и время"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "Recommended"
@@ -177,4 +196,4 @@ msgstr "Назад"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "More"
-msgstr "Еще"
+msgstr "Ещё"
