@@ -46,6 +46,7 @@ PlasmaCore.Dialog {
     flags: Qt.WindowStaysOnTopHint
     location: plasmoid.configuration.pullupAnimation ? PlasmaCore.Types.BottomEdge : PlasmaCore.Types.Floating
     hideOnWindowDeactivate: true
+    property bool isFavoritesAList: plasmoid.configuration.useListInsteadOfGrid
 
     property int defaultSize: {
         switch(plasmoid.configuration.defaultSize){
@@ -119,10 +120,18 @@ PlasmaCore.Dialog {
 
 
     function reset() {
-        globalFavoritesGrid.tryActivate(0,0)
+        activateFavorites()
         searchField.clear();
         readySearch = false
         viewDocuments = false
+    }
+
+    function activateFavorites() {
+        if (isFavoritesAList) {
+            globalFavoritesList.tryActivate(0,0)
+        } else {
+            globalFavoritesGrid.tryActivate(0,0)
+        }
     }
 
     function setModels(){
@@ -266,7 +275,7 @@ PlasmaCore.Dialog {
                     else if(viewDocuments)
                         documentsFavoritesGrid.tryActivate(0,0);
                     else
-                        globalFavoritesGrid.tryActivate(0,0);
+                        activateFavorites();
                 }
             }
         }
@@ -426,11 +435,9 @@ PlasmaCore.Dialog {
                 }
             ]
 
-
-
-
             ItemGridView {
                 id: globalFavoritesGrid
+                visible: !isFavoritesAList
                 width: tileSideWidth *  plasmoid.configuration.numberColumns
                 height: tileSideHeight *  plasmoid.configuration.numberRows
 
@@ -458,6 +465,68 @@ PlasmaCore.Dialog {
                         name: "large"
                         when: viewDocuments
                         PropertyChanges { target:globalFavoritesGrid; height: 0 }
+                    }
+                ]
+                transitions: Transition {
+                    PropertyAnimation { property: "height"; duration: PlasmaCore.Units.shortDuration*2;}
+                }
+                Keys.onPressed: {
+                    if(event.modifiers & Qt.ControlModifier ||event.modifiers & Qt.ShiftModifier){
+                        searchField.focus = true;
+                        return
+                    }
+
+                    if (event.key === Qt.Key_Tab) {
+                        event.accepted = true;
+                        documentsFavoritesGrid.tryActivate(0,0)
+                    } else if (event.key === Qt.Key_Backspace) {
+                        event.accepted = true;
+                        if(searching)
+                            searchField.backspace();
+                        else
+                            searchField.focus = true
+                    } else if (event.key === Qt.Key_Escape) {
+                        event.accepted = true;
+                        if(searching){
+                            searchField.clear()
+                        } else {
+                            root.toggle()
+                        }
+                    } else if (event.text !== "") {
+                        event.accepted = true;
+                        searchField.appendText(event.text);
+                    }
+                }
+
+            }
+
+            ItemListView {
+                id: globalFavoritesList
+                visible: isFavoritesAList
+                width: tileSideWidth *  plasmoid.configuration.numberColumns
+                height: tileSideHeight *  plasmoid.configuration.numberRows
+
+                iconSize:    root.iconSizeSquare
+                model: plasmoid.configuration.showRecentApps ?  rootModel.modelForRow(0) : rootModel.favoritesModel
+                dropEnabled: true
+                usesPlasmaTheme: true
+                verticalScrollBarPolicy: Qt.ScrollBarAlwaysOff
+                state: 'small'
+
+                onKeyNavDown: documentsFavoritesGrid.tryActivate(0,0)
+                onKeyNavUp: searchField.focus = true
+
+                states: [
+                    State {
+                        name: "small"
+                        when: !viewDocuments
+                        PropertyChanges { target: globalFavoritesList; height: tileSideHeight *  plasmoid.configuration.numberRows }
+
+                    },
+                    State {
+                        name: "large"
+                        when: viewDocuments
+                        PropertyChanges { target:globalFavoritesList; height: 0 }
                     }
                 ]
                 transitions: Transition {
@@ -543,7 +612,7 @@ PlasmaCore.Dialog {
                 state: 'small'
                 onKeyNavUp: {
                     if (viewDocuments) searchField.focus = true
-                    else  globalFavoritesGrid.tryActivate(0,0);
+                    else  activateFavorites();
                 }
 
                 states: [
@@ -571,7 +640,7 @@ PlasmaCore.Dialog {
                     if (event.key === Qt.Key_Tab) {
                         event.accepted = true;
                         if (viewDocuments) searchField.focus = true
-                        else  globalFavoritesGrid.tryActivate(0,0);
+                        else  activateFavorites();
 
                     }  else if (event.key === Qt.Key_Backspace) {
                         event.accepted = true;
@@ -691,7 +760,7 @@ PlasmaCore.Dialog {
                             mainColumn.visibleGrid = allAppsGrid;
                         }
                     }
-                    onKeyNavRight: globalFavoritesGrid.tryActivate(0,0)
+                    onKeyNavRight: activateFavorites()
 
                 }
 
@@ -712,7 +781,7 @@ PlasmaCore.Dialog {
                             mainColumn.visibleGrid = runnerGrid;
                         }
                     }
-                    onKeyNavRight: globalFavoritesGrid.tryActivate(0,0)
+                    onKeyNavRight: activateFavorites()
                 }
 
 
@@ -725,7 +794,7 @@ PlasmaCore.Dialog {
 
                     if (event.key === Qt.Key_Tab) {
                         event.accepted = true;
-                        globalFavoritesGrid.tryActivate(0,0)
+                        activateFavorites()
                     } else if (event.key === Qt.Key_Backspace) {
                         event.accepted = true;
                         if(searching)
