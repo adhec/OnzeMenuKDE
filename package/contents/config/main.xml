@@ -59,6 +59,9 @@
     <entry name="showRecentApps" type="Bool">
       <default>false</default>
     </entry>
+    <entry name="useListInsteadOfGrid" type="Bool">
+      <default>false</default>
+    </entry>
     <entry name="pullupAnimation" type="Bool">
       <default>true</default>
     </entry>

@@ -46,6 +46,7 @@ Kirigami.FormLayout {
     property alias cfg_useExtraRunners: useExtraRunners.checked
     property alias cfg_hideRecentDocs: hideRecentDocs.checked
     property alias cfg_showRecentApps: showRecentApps.checked
+    property alias cfg_useListInsteadOfGrid: useListInsteadOfGrid.checked
 
     property alias cfg_numberColumns: numberColumns.value
     property alias cfg_numberRows: numberRows.value
@@ -215,6 +216,11 @@ Kirigami.FormLayout {
         id: showRecentApps
         Kirigami.FormData.label: i18n("Main section")
         text: i18n("Show recent applications")
+    }
+
+    CheckBox {
+        id: useListInsteadOfGrid
+        text: i18n("Use item list instead of grid")
     }
 
     CheckBox {
