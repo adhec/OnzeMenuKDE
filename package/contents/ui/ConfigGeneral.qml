@@ -45,6 +45,7 @@ Kirigami.FormLayout {
 
     property alias cfg_useExtraRunners: useExtraRunners.checked
     property alias cfg_hideRecentDocs: hideRecentDocs.checked
+    property alias cfg_hideClock: hideClock.checked
     property alias cfg_showRecentApps: showRecentApps.checked
 
     property alias cfg_numberColumns: numberColumns.value
@@ -233,6 +234,11 @@ Kirigami.FormLayout {
         text: i18n("Hide recent documents")
     }
 
+    CheckBox {
+        id: hideClock
+        text: i18n("Hide clock")
+    }
+
     SpinBox{
         id: numberColumns
         from: 4
@@ -243,7 +249,7 @@ Kirigami.FormLayout {
     SpinBox{
         id: numberRows
         from: 1
-        to: 10
+        to: 15
         Kirigami.FormData.label: i18n("Number of rows (main grid)")
 
     }
