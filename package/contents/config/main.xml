@@ -56,6 +56,9 @@
     <entry name="hideRecentDocs" type="Bool">
       <default>false</default>
     </entry>
+    <entry name="hideClock" type="Bool">
+      <default>true</default>
+    </entry>
     <entry name="showRecentApps" type="Bool">
       <default>false</default>
     </entry>

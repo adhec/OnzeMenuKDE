@@ -291,11 +291,6 @@ PlasmaCore.Dialog {
             width: height
         }
 
-        //
-        //
-        //
-        //
-
         RowLayout{
             id: topRow
             anchors.top: searchField.bottom
@@ -370,7 +365,7 @@ PlasmaCore.Dialog {
             id: firstPage
 
             width:  tileSideWidth * plasmoid.configuration.numberColumns
-            height: tileSideHeight * plasmoid.configuration.numberRows  + btnAction.implicitHeight + tileHeightDocuments * 3 + _margin
+            height: (tileSideHeight * plasmoid.configuration.numberRows) + (plasmoid.configuration.hideRecentDocs ? 0 : (btnAction.implicitHeight + (_margin * 2) + (tileHeightDocuments * 3))) + (plasmoid.configuration.hideClock ? 0 : (btnAction.implicitHeight + (_margin * 2) + (tileHeightDocuments * 3)))
 
             anchors.top: topRow.bottom
             anchors.topMargin: _margin
@@ -496,9 +491,10 @@ PlasmaCore.Dialog {
             RowLayout{
                 width: parent.width
                 height: btnAction.implicitHeight
+                visible: !plasmoid.configuration.hideRecentDocs
 
                 PlasmaCore.IconItem {
-                    source: plasmoid.configuration.hideRecentDocs ? 'clock' : 'tag'
+                    source: 'tag'
                     implicitHeight: PlasmaCore.Units.iconSizes.smallMedium
                     implicitWidth: PlasmaCore.Units.iconSizes.smallMedium
                 }
@@ -507,7 +503,7 @@ PlasmaCore.Dialog {
                     id: headLabelDocuments
                     color: colorWithAlpha(theme.textColor, 0.8)
                     level: 5
-                    text: plasmoid.configuration.hideRecentDocs ?  i18n("Date and time") :  i18n("Recommended")
+                    text: i18n("Recommended")
                     Layout.leftMargin: PlasmaCore.Units.smallSpacing
                     font.weight: Font.Bold
                 }
@@ -524,11 +520,6 @@ PlasmaCore.Dialog {
                 }
             }
 
-            Clock{
-                width: parent.width
-                height:  tileHeightDocuments * 3
-                visible: plasmoid.configuration.hideRecentDocs
-            }
             ItemGridView3 {
                 id: documentsFavoritesGrid
                 visible: !plasmoid.configuration.hideRecentDocs
@@ -593,6 +584,37 @@ PlasmaCore.Dialog {
 
                 }
             }
+
+            RowLayout{
+                width: parent.width
+                height: btnAction.implicitHeight
+                visible: !plasmoid.configuration.hideClock
+
+                PlasmaCore.IconItem {
+                    source: 'clock'
+                    implicitHeight: PlasmaCore.Units.iconSizes.smallMedium
+                    implicitWidth: PlasmaCore.Units.iconSizes.smallMedium
+                }
+
+                PlasmaExtras.Heading {
+                    id: headLabelClock
+                    color: colorWithAlpha(theme.textColor, 0.8)
+                    level: 5
+                    text: i18n("Date and time")
+                    Layout.leftMargin: PlasmaCore.Units.smallSpacing
+                    font.weight: Font.Bold
+                }
+                Item{
+                    Layout.fillWidth: true
+                }
+            }
+
+            Clock{
+                width: parent.width
+                height:  tileHeightDocuments * 3
+                visible: !plasmoid.configuration.hideClock
+            }
+
             Item{
                 Layout.fillHeight: true
             }
