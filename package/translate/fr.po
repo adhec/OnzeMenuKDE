@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-30 00:33-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Last-Translator: G.K "PoorPockets McNewHold" gk@e.email \n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -81,11 +81,11 @@ msgstr "Centré en bas"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Main section"
-msgstr ""
+msgstr "Section principale"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Show recent applications"
-msgstr ""
+msgstr "Afficher les applications récentes"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Expand search to bookmarks, files and emails"
@@ -97,7 +97,7 @@ msgstr "Montrer les étiquettes sur 2 lignes"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Hide recent documents"
-msgstr ""
+msgstr "Cacher les documents récents"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Number of columns (main grid)"
@@ -109,11 +109,11 @@ msgstr "Nombre de lignes (grille principale)"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Icons smooth"
-msgstr ""
+msgstr "Lissement des icônes"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Pull Up Animation"
-msgstr ""
+msgstr "Animation d'apparition"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Size of icons"
@@ -121,11 +121,11 @@ msgstr "Taille des icônes"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Unhide all applications"
-msgstr ""
+msgstr "Re-affiche les applications"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Unhidden!"
-msgstr ""
+msgstr "Re-affichés !"
 
 #: ../contents/ui/Footer.qml
 msgid "User Home"
@@ -165,7 +165,7 @@ msgstr "Toutes les applications"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "Date and time"
-msgstr ""
+msgstr "Date et temps"
 
 #: ../contents/ui/MenuRepresentation.qml
 msgid "Recommended"
